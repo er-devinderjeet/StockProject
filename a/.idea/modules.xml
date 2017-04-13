@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../MachineLearningStudyGroup-master/.idea/MachineLearningStudyGroup-master.iml" filepath="$PROJECT_DIR$/../MachineLearningStudyGroup-master/.idea/MachineLearningStudyGroup-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../friend/WebGui/.idea/WebGui.iml" filepath="$PROJECT_DIR$/../friend/WebGui/.idea/WebGui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/a.iml" filepath="$PROJECT_DIR$/.idea/a.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../practice/.idea/practice.iml" filepath="$PROJECT_DIR$/../practice/.idea/practice.iml" />
+    </modules>
+  </component>
+</project>

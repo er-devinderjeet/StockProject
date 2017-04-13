@@ -1,0 +1,12 @@
+
+python setup.py build_ext --inplace
+python 1.py
+
+
+
+---------------NOTEBOOK-------------------------
+%load_ext Cython
+%%cython
+def fibB():
+    cdef int n = 10
+    return n

@@ -1,0 +1,1681 @@
+<!DOCTYPE html>
+<!-- saved from url=(0121)http://stackoverflow.com/questions/20873259/pyqt-how-to-dynamically-update-widget-property-on-outer-variable-value-change -->
+<html itemscope="" itemtype="http://schema.org/QAPage"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>python - pyqt: How to dynamically update widget property on outer variable value change? - Stack Overflow</title>
+    <link rel="shortcut icon" href="https://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+    <link rel="apple-touch-icon image_src" href="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="http://stackoverflow.com/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com">
+    <meta property="og:type" content="website">
+
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded">
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="pyqt: How to dynamically update widget property on outer variable value change?">
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I have class Ui_MainWindow(object) that creates a window with a progress bar and class OtherClass(object) that contains method in which the local int variable increments in cycle.
+
+How to connect l...">
+    <meta property="og:url" content="http://stackoverflow.com/questions/20873259/pyqt-how-to-dynamically-update-widget-property-on-outer-variable-value-change">
+    <link rel="canonical" href="http://stackoverflow.com/questions/20873259/pyqt-how-to-dynamically-update-widget-property-on-outer-variable-value-change">
+
+    
+    
+    <script type="text/javascript" async="" src="http://engine.adzerk.net/ados?t=1491032990563&amp;request={%22Placements%22:[{%22A%22:22,%22S%22:8277,%22D%22:%22adzerk541808279%22,%22AT%22:4,%22Z%22:[43]},{%22A%22:22,%22S%22:8277,%22D%22:%22adzerk1210415903%22,%22AT%22:4,%22Z%22:[44]},{%22A%22:22,%22S%22:8277,%22D%22:%22adzerk1873155084%22,%22ATA%22:[5,17,2221],%22Z%22:[45]}],%22Keywords%22:%22python%2Cpyqt%2Csignals-slots%22,%22Referrer%22:%22https%3A%2F%2Fwww.google.co.in%2F%22,%22IsAsync%22:true}"></script><script src="./python - pyqt_ How to dynamically update widget property on outer variable value change_ - Stack Overflow_files/rules-p-c1rF4kxgLUzNc.js.download"></script><script async="" src="./python - pyqt_ How to dynamically update widget property on outer variable value change_ - Stack Overflow_files/quant.js.download"></script><script async="" src="./python - pyqt_ How to dynamically update widget property on outer variable value change_ - Stack Overflow_files/beacon.js.download"></script><script async="" src="./python - pyqt_ How to dynamically update widget property on outer variable value change_ - Stack Overflow_files/analytics.js.download"></script><script type="text/javascript" async="" src="./python - pyqt_ How to dynamically update widget property on outer variable value change_ - Stack Overflow_files/ados.js.download"></script><script src="./python - pyqt_ How to dynamically update widget property on outer variable value change_ - Stack Overflow_files/jquery.min.js.download"></script>
+    <script src="./python - pyqt_ How to dynamically update widget property on outer variable value change_ - Stack Overflow_files/stub.en.js.download"></script>
+    <link rel="stylesheet" type="text/css" href="./python - pyqt_ How to dynamically update widget property on outer variable value change_ - Stack Overflow_files/all.css">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;pyqt: How to dynamically update widget property on outer variable value change?&#39;" href="http://stackoverflow.com/feeds/question/20873259">
+            <meta name="twitter:app:country" content="US">
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:iphone" content="871299723">
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/20873259/pyqt-how-to-dynamically-update-widget-property-on-outer-variable-value-change">
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:ipad" content="871299723">
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/20873259/pyqt-how-to-dynamically-update-widget-property-on-outer-variable-value-change">
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/20873259/pyqt-how-to-dynamically-update-widget-property-on-outer-variable-value-change">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:1,shownCommentCount:1,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:20873259});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '20873259');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text', true); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","networkMetaHostname":"meta.stackexchange.com","serverTime":1491032984,"routeName":"Questions/Show","site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"enableInsertDocLinkDialog":true,"childUrl":"https://meta.stackoverflow.com","enableSocialMediaInSharePopup":true,"protocol":"http"},"user":{"fkey":"515a9673fc46795fa2d29b49460de3d2","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true,"canSeeNewHeaderDesign":true},"events":{"postType":{"question":1},"postEditionSection":{"title":1,"body":2,"tags":3}},"story":{"minCompleteBodyLength":75}}, {"site":{"allowImageUploads":true,"enableUserHovercards":true,"styleCode":true,"enableNewLinkInsertDialog":true,"enableImgurHttps":true,"forceHttpsImages":true},"comments":{},"userProfile":{"openGraphAPIKey":"58740831ad23540e00c58987"},"tags":{},"accounts":{"currentPasswordRequiredForChangingStackIdPassword":true},"flags":{"allowRetractingFlags":true},"snippets":{"snippetsEnabled":true,"renderDomain":"stacksnippets.net"},"markdown":{"asteriskIntraWordEmphasis":true},"monitoring":{"clientTimingsAbsoluteTimeout":30000,"clientTimingsDebounceTimeout":1000}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"2742d0a57b8f","js/moderator.en.js":"a21527cce4e3","js/full-anon.en.js":"7f5ab2e0b6de","js/full.en.js":"661193b13659","js/wmd.en.js":"e9e193273297","js/third-party/jquery.autocomplete.min.js":"d3b8fa7fdf74","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"c37948fe0a99","js/help.en.js":"a2f92aacc060","js/tageditor.en.js":"9c6df10dabc4","js/tageditornew.en.js":"e0c4c9b047d2","js/inline-tag-editing.en.js":"2ddfa79492e7","js/revisions.en.js":"8f22ba768cac","js/review.en.js":"e8bbf04818b6","js/tagsuggestions.en.js":"78eee7c19ab2","js/post-validation.en.js":"a4307119541f","js/explore-qlist.en.js":"d33e3ab2f2e0","js/events.en.js":"94f16a409a23","js/keyboard-shortcuts.en.js":"bf8e884c225e","js/external-editor.en.js":"dec8b7cab79e","js/adops.en.js":"9a6a7812a212","js/external-editor.en.js":"dec8b7cab79e","js/snippet-javascript.en.js":"9d345bbe4762","js/snippet-javascript-codemirror.en.js":"ab5fec05fc11"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    <noscript id="noscript-css">&lt;style type="text/css"&gt;body,.so-header{margin-top:1.9em}&lt;/style&gt;</noscript>
+<script async="" src="./python - pyqt_ How to dynamically update widget property on outer variable value change_ - Stack Overflow_files/full-anon.en.js.download"></script><script async="" src="./python - pyqt_ How to dynamically update widget property on outer variable value change_ - Stack Overflow_files/snippet-javascript.en.js.download"></script><script async="" src="./python - pyqt_ How to dynamically update widget property on outer variable value change_ - Stack Overflow_files/post-validation.en.js.download"></script><script async="" src="./python - pyqt_ How to dynamically update widget property on outer variable value change_ - Stack Overflow_files/prettify-full.en.js.download"></script><script async="" src="./python - pyqt_ How to dynamically update widget property on outer variable value change_ - Stack Overflow_files/external-editor.en.js.download"></script><script type="text/javascript" src="http://static.adzerk.net/Extensions/adFeedback.js"></script><link rel="stylesheet" href="http://static.adzerk.net/Extensions/adFeedback.css"><link rel="stylesheet" href="./python - pyqt_ How to dynamically update widget property on outer variable value change_ - Stack Overflow_files/jobs-multi.min.css" type="text/css"></head>
+<body class="question-page new-topbar">
+            <script>(function () { var old = $.fn.contents; $.fn.contents = function () { try { return old.apply(this, arguments); } catch (e) { return $([]); } } })()</script>
+        
+
+    <div id="notify-container"></div>
+    <div id="custom-header"></div>
+
+
+<header class="so-header js-so-header _fixed _scrolling">
+    <div class="-container">
+        <div class="-main">            
+            <a href="http://stackoverflow.com/" class="-logo ">
+                <span class="-img">Stack Overflow</span>
+            </a>
+
+            <nav class="navigation" role="navigation" aria-label="site navigation">
+                <ol class="-list">
+                        <li class="-item _current">
+        <a id="nav-questions" href="http://stackoverflow.com/questions" class="-link js-gps-track" data-gps-track="top_nav.click({is_current:true, location:2, destination:1})">Questions</a>
+    </li>
+
+    <li class="-item">
+        <a id="nav-jobs" href="http://stackoverflow.com/jobs?med=site-ui&amp;ref=jobs-tab" class="-link js-gps-track" data-gps-track="top_nav.click({is_current:false, location:2, destination:6})">Jobs</a>
+    </li>
+                        <li class="-item">
+        <a id="nav-docs" href="http://stackoverflow.com/documentation" class="-link js-gps-track" data-gps-track="top_nav.click({is_current:false, location:2, destination:7})">Documentation <small class="beta-badge">beta</small></a>
+    </li>
+                        <li class="-item">
+        <a id="nav-tags" href="http://stackoverflow.com/tags" class="-link js-gps-track" data-gps-track="top_nav.click({is_current:false, location:2, destination:2})">Tags</a>
+    </li>
+
+                        <li class="-item">
+        <a id="nav-users" href="http://stackoverflow.com/users" class="-link js-gps-track" data-gps-track="top_nav.click({is_current:false, location:2, destination:3})">Users</a>
+    </li>
+
+                </ol>
+            </nav>
+
+            <form id="search" action="http://stackoverflow.com/search" method="get" class="searchbar" autocomplete="off" role="search">
+                <svg viewBox="0 0 18 18" width="18" height="18" role="icon"><path fill-rule="evenodd" d="M12.864 11.32h-.813l-.288-.277A6.66 6.66 0 0 0 13.38 6.69a6.69 6.69 0 1 0-6.69 6.69 6.66 6.66 0 0 0 4.354-1.617l.278.288v.813L16.467 18 18 16.467l-5.136-5.146zm-6.174 0a4.625 4.625 0 0 1-4.632-4.63A4.625 4.625 0 0 1 6.69 2.058a4.625 4.625 0 0 1 4.63 4.632 4.625 4.625 0 0 1-4.63 4.63z"></path></svg>
+                <input name="q" type="text" placeholder="Search..." value="" tabindex="1" autocomplete="off" maxlength="240" class="f-input js-search-field">
+                <button type="submit" class="btn js-search-submit">
+                    <svg viewBox="0 0 18 18" width="18" height="18" role="icon"><path fill-rule="evenodd" d="M12.864 11.32h-.813l-.288-.277A6.66 6.66 0 0 0 13.38 6.69a6.69 6.69 0 1 0-6.69 6.69 6.66 6.66 0 0 0 4.354-1.617l.278.288v.813L16.467 18 18 16.467l-5.136-5.146zm-6.174 0a4.625 4.625 0 0 1-4.632-4.63A4.625 4.625 0 0 1 6.69 2.058a4.625 4.625 0 0 1 4.63 4.632 4.625 4.625 0 0 1-4.63 4.63z"></path></svg>
+                </button>
+            </form>
+
+        </div>
+        
+
+
+<div class="-actions">
+    <nav class="secondary-nav">
+        <div class="-dialog-container js-topbar-dialog-corral">
+
+
+    <div class="topbar-dialog siteSwitcher-dialog dno">
+        <div class="header">
+            <h3><a href="http://stackoverflow.com/">current community</a>
+            </h3>
+        </div>
+        <div class="modal-content current-site-container">
+            <ul class="current-site">
+                    <li>
+                            <div class="related-links">
+            <a href="http://stackoverflow.com/help" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:14 })">help</a>
+                    <a href="http://chat.stackoverflow.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:6 })">chat</a>
+            </div>
+
+    <a href="http://stackoverflow.com/" class="current-site-link site-link js-gps-track" data-id="1" data-gps-track="site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                    </li>
+                    <li class="related-site">
+                            <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                        
+    <a href="https://meta.stackoverflow.com/" class="site-link js-gps-track" data-id="552" data-gps-track="site.switch({ target_site:552, item_type:3 }),site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                    </li>
+            </ul>
+        </div>
+
+        <div class="header" id="your-communities-header">
+            <h3>
+your communities            </h3>
+
+        </div>
+        <div class="modal-content" id="your-communities-section">
+
+                <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=%2fusers%2fstory%2fcurrent&amp;amp;utm_source=stackoverflow.com&amp;amp;utm_medium=dev-story&amp;amp;utm_campaign=signup-redirect" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:10 })">Sign up</a> or <a href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f20873259%2fpyqt-how-to-dynamically-update-widget-property-on-outer-variable-value-change" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:11 })">log in</a> to customize your list.
+                </div>
+        </div>
+
+        <div class="header">
+            <h3><a href="https://stackexchange.com/sites">more stack exchange communities</a>
+            </h3>
+            <a href="https://stackoverflow.blog/" class="fr">company blog</a>
+        </div>
+        <div class="modal-content">
+                <div class="child-content"></div>
+        </div>        
+    </div>
+                <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="http://stackoverflow.com/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="http://stackoverflow.com/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                        <li>
+                            <a href="https://meta.stackoverflow.com/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                                Meta
+                                <span class="item-summary">
+                                    Discuss the workings and policies of this site
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://stackoverflow.com/company/about" class="js-gps-track" data-gps-track="help_popup.click({ item_type:6 })">
+                                About Us
+                                <span class="item-summary">
+                                    Learn more about Stack Overflow the company
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.stackoverflowbusiness.com/?ref=topbar_help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:7 })">
+                                Business
+                                <span class="item-summary">
+                                    Learn more about hiring developers or posting ads with us
+                                </span>
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+
+        </div>
+        <ol class="-list">
+            
+    <li class="-item"><a href="http://stackoverflow.com/questions/20873259/pyqt-how-to-dynamically-update-widget-property-on-outer-variable-value-change#" class="-link js-help-button" title="Help Center and other resources">
+        <svg viewBox="0 0 18 18" width="18" height="18" role="icon"><path fill-rule="evenodd" d="M9 0a9 9 0 1 0 .001 18.001A9 9 0 0 0 9 0zm.812 13.126c-.02.716-.55 1.157-1.238 1.137-.659-.02-1.177-.49-1.157-1.209.02-.715.566-1.17 1.225-1.15.691.021 1.194.507 1.17 1.222zm1.956-5.114c-.168.237-.546.542-1.02.912l-.527.361c-.257.197-.417.43-.502.695-.044.141-.076.507-.084.752-.004.048-.032.156-.181.156H7.883c-.165 0-.185-.096-.18-.144.023-.667.12-1.218.397-1.66.374-.594 1.426-1.221 1.426-1.221.161-.12.286-.25.382-.39.177-.24.321-.51.321-.8 0-.333-.08-.65-.293-.915-.249-.31-.518-.458-1.036-.458-.51 0-.808.257-1.021.594-.213.338-.177.735-.177 1.097H5.746c0-1.366.357-2.238 1.112-2.752.51-.35 1.162-.502 1.921-.502.996 0 1.788.184 2.487.715.647.49.988 1.181.988 2.113 0 .575-.2 1.057-.486 1.447z"></path></svg>
+    </a></li>
+                <li class="-item">
+        <a href="https://stackexchange.com/" class="-link js-site-switcher-button js-gps-track" data-gps-track="site_switcher.show" title="A list of all 167 Stack Exchange sites">
+            <svg viewBox="0 0 18 19" width="18" height="19" role="icon"><path fill-rule="evenodd" d="M0 14a2 2 0 0 0 2 2h10v3l3-3h1a2 2 0 0 0 2-2v-2H0v2zM16 0H2a2 2 0 0 0-2 2v2h18V2a2 2 0 0 0-2-2zM0 6h18v4H0V6z"></path></svg>
+        </a>
+    </li>
+
+
+        </ol>
+    </nav>
+        <div class="-ctas">
+                    <a href="https://stackoverflow.com/users/login?ssrc=head&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f20873259%2fpyqt-how-to-dynamically-update-widget-property-on-outer-variable-value-change" class="login-link btn-clear" rel="nofollow">Log In</a>
+                        <a href="https://stackoverflow.com/users/signup?ssrc=head&amp;returnurl=%2fusers%2fstory%2fcurrent&amp;utm_source=stackoverflow.com&amp;utm_medium=dev-story&amp;utm_campaign=signup-redirect" class="login-link btn" rel="nofollow">Sign Up</a>
+
+        </div>
+</div>
+    </div>
+</header>
+
+    <script>
+        StackExchange.ready(function () { StackExchange.topbar.init(); });
+            StackExchange.scrollPadding.setPaddingTop(60, 10);     </script>
+
+    <div class="container">
+        
+
+
+        <div id="content" class="snippet-hidden">
+
+
+
+            
+
+<div itemscope="" itemtype="http://schema.org/Question">
+    <link itemprop="image" href="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+
+
+<div id="herobox" class="alternate">
+    <div class="test"></div>
+        <div id="close">
+            <a title="click to minimize"><span>x</span> Dismiss</a>
+        </div>
+            <div class="content">
+            <div class="blurb" style="margin-bottom: 10px;">Improve your security with</div>
+            <b>Dance Dance Authentication</b>
+            <div class="separator"></div>
+            <div class="blurb">
+                Now available on Stack Overflow.
+            </div>
+            <a href="https://stackoverflow.blog/2017/03/30/stack-overflow-unveils-next-steps-computer-security" class="button">Learn more</a>
+        </div>
+</div>
+<script>
+    StackExchange.ready(function () {
+
+        var location = 0;
+        if ($("body").hasClass("questions-page")) {
+            location = 1;;
+        } else if ($("body").hasClass("question-page")) {
+            location = 1;;
+        } else if ($("body").hasClass("faq-page")) {
+            location = 5;;
+        } else if ($("body").hasClass("home-page")) {
+            location = 3;;
+        }
+        
+        $('#herobox #close').click(function () {
+            $.cookie("hero", "mini", { path: "/", expires: 365 });
+            $.ajax({
+                url: "/hero-mini",
+                success: function (data) {
+                    $("#herobox").fadeOut("fast", function () {
+                        $("#herobox").replaceWith(data);
+                        $("#herobox-mini").fadeIn("fast");
+                    });
+                }
+            });
+            return false;
+        });
+    });
+
+</script>			<div id="question-header">
+                <h1 itemprop="name"><a href="http://stackoverflow.com/questions/20873259/pyqt-how-to-dynamically-update-widget-property-on-outer-variable-value-change" class="question-hyperlink">pyqt: How to dynamically update widget property on outer variable value change?</a></h1>
+
+            
+<div class="aside-cta" role="navigation" aria-label="ask new question">
+    <a href="http://stackoverflow.com/questions/ask" class="btn-outlined">Ask Question</a>
+</div>
+		</div>
+			<div id="mainbar" role="main" aria-label="question and answers">
+
+			
+
+<div class="question" data-questionid="20873259" id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk541808279",4).setZone(43); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk541808279"><a href="http://engine.adzerk.net/r?e=eyJhdiI6NDE5LCJhdCI6NCwiYnQiOjAsImNtIjo1NTM5ODcsImNoIjoxMTc4LCJjayI6e30sImNyIjoxODgzODQ4LCJkaSI6ImNkYjNkMGNiMWM4ZDQyNjk5MzkxNzIxY2U0NjkzMjczIiwiZG0iOjEsImZjIjoyNzY4OTM3LCJmbCI6MzA0NjgyOSwiaXAiOiIxMTIuMTk2LjE5LjM0Iiwia3ciOiJweXRob24scHlxdCxzaWduYWxzLXNsb3RzIiwibWsiOiJweXF0IiwibnciOjIyLCJwYyI6MTAuNywiZWMiOjEwLjcsInByIjo3NjUsInJ0IjoyLCJyZiI6Imh0dHBzOi8vd3d3Lmdvb2dsZS5jby5pbi8iLCJzdCI6ODI3NywidWsiOiJ1ZTEtOGFhOWEzZmI3YzM4NGVlMDhjNmNlNTAwMjU3N2I3ZTIiLCJ6biI6NDMsInRzIjoxNDkxMDMyOTg2NzI3LCJiZiI6dHJ1ZSwicG4iOiJhZHplcms1NDE4MDgyNzkiLCJ1ciI6Imh0dHBzOi8vd3d3LmZyb2dsb2dpYy5jb20vc3F1aXNoL2ZyZWUtdHJpYWwvP3BrX2NhbXBhaWduPXN0YWNrb3ZlcmZsb3ctdG9wLWxlYWRlcmJvYXJkJnBrX2tleXdvcmQ9c3F1aXNoIn0&amp;s=4U6iYnCbzE1xJttV4sHjaZkqsd4" rel="nofollow" target="_blank" title=""><img src="http://static.adzerk.net/Advertisers/f7cfd89be59f44bf8098872c6dec8d47.png" title="" alt="" border="0" width="728" height="90" style="display: none !important;"></a><img height="0px" width="0px" border="0" style="position: absolute; display: none !important;" src="http://engine.adzerk.net/i.gif?e=eyJhdiI6NDE5LCJhdCI6NCwiYnQiOjAsImNtIjo1NTM5ODcsImNoIjoxMTc4LCJjayI6e30sImNyIjoxODgzODQ4LCJkaSI6ImNkYjNkMGNiMWM4ZDQyNjk5MzkxNzIxY2U0NjkzMjczIiwiZG0iOjEsImZjIjoyNzY4OTM3LCJmbCI6MzA0NjgyOSwiaXAiOiIxMTIuMTk2LjE5LjM0Iiwia3ciOiJweXRob24scHlxdCxzaWduYWxzLXNsb3RzIiwibWsiOiJweXF0IiwibnciOjIyLCJwYyI6MTAuNywiZWMiOjEwLjcsInByIjo3NjUsInJ0IjoyLCJyZiI6Imh0dHBzOi8vd3d3Lmdvb2dsZS5jby5pbi8iLCJzdCI6ODI3NywidWsiOiJ1ZTEtOGFhOWEzZmI3YzM4NGVlMDhjNmNlNTAwMjU3N2I3ZTIiLCJ6biI6NDMsInRzIjoxNDkxMDMyOTg2NzI5LCJiZiI6dHJ1ZSwicG4iOiJhZHplcms1NDE4MDgyNzkiLCJmcSI6MH0&amp;s=p_AJRIBKCOi8QoLKXnb9QPvPHNc"></div>    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="20873259">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="http://stackoverflow.com/questions/20873259/pyqt-how-to-dynamically-update-widget-property-on-outer-variable-value-change#">favorite</a>
+        <div class="favoritecount"><b></b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>I have <code>class Ui_MainWindow(object)</code> that creates a window with a progress bar and <code>class OtherClass(object)</code> that contains method in which the local int variable increments in cycle.</p>
+
+<p>How to connect local variable value change to progres bar value change?</p>
+
+<h1>mainGUI.py</h1>
+
+<pre class="lang-py prettyprint prettyprinted"><code><span class="kwd">import</span><span class="pln"> sys
+</span><span class="kwd">from</span><span class="pln"> </span><span class="typ">PyQt4</span><span class="pun">.</span><span class="pln">uic</span><span class="pun">.</span><span class="typ">Compiler</span><span class="pun">.</span><span class="pln">qtproxies </span><span class="kwd">import</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pln">
+</span><span class="kwd">from</span><span class="pln"> </span><span class="typ">PyQt4</span><span class="pln"> </span><span class="kwd">import</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pln">
+</span><span class="kwd">from</span><span class="pln"> </span><span class="typ">Ui_MainWindow</span><span class="pln"> </span><span class="kwd">import</span><span class="pln"> </span><span class="typ">Ui_MainWindow</span><span class="pln">
+
+</span><span class="kwd">def</span><span class="pln"> main</span><span class="pun">():</span><span class="pln">
+
+    app </span><span class="pun">=</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QApplication</span><span class="pun">(</span><span class="pln">sys</span><span class="pun">.</span><span class="pln">argv</span><span class="pun">)</span><span class="pln">
+    </span><span class="typ">MainWindow</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QMainWindow</span><span class="pun">()</span><span class="pln">
+    ui </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Ui_MainWindow</span><span class="pun">()</span><span class="pln">
+    ui</span><span class="pun">.</span><span class="pln">setupUi</span><span class="pun">(</span><span class="typ">MainWindow</span><span class="pun">)</span><span class="pln">
+    </span><span class="typ">MainWindow</span><span class="pun">.</span><span class="pln">show</span><span class="pun">()</span><span class="pln">
+    sys</span><span class="pun">.</span><span class="pln">exit</span><span class="pun">(</span><span class="pln">app</span><span class="pun">.</span><span class="pln">exec_</span><span class="pun">())</span><span class="pln">
+
+
+
+</span><span class="kwd">if</span><span class="pln"> __name__ </span><span class="pun">==</span><span class="pln"> </span><span class="str">'__main__'</span><span class="pun">:</span><span class="pln">
+    main</span><span class="pun">()</span></code></pre>
+
+<h1>Ui_MainWindow.py</h1>
+
+<pre class="lang-py prettyprint prettyprinted"><code><span class="kwd">from</span><span class="pln"> </span><span class="typ">PyQt4</span><span class="pln"> </span><span class="kwd">import</span><span class="pln"> </span><span class="typ">QtCore</span><span class="pun">,</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pln">
+</span><span class="kwd">from</span><span class="pln"> </span><span class="typ">MainGui</span><span class="pun">.</span><span class="typ">OtherClass</span><span class="pln"> </span><span class="kwd">import</span><span class="pln"> </span><span class="typ">OtherClass</span><span class="pln">
+
+</span><span class="kwd">try</span><span class="pun">:</span><span class="pln">
+    _fromUtf8 </span><span class="pun">=</span><span class="pln"> </span><span class="typ">QtCore</span><span class="pun">.</span><span class="typ">QString</span><span class="pun">.</span><span class="pln">fromUtf8
+</span><span class="kwd">except</span><span class="pln"> </span><span class="typ">AttributeError</span><span class="pun">:</span><span class="pln">
+    _fromUtf8 </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">lambda</span><span class="pln"> s</span><span class="pun">:</span><span class="pln"> s
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">Ui_MainWindow</span><span class="pun">(</span><span class="pln">object</span><span class="pun">):</span><span class="pln">
+
+    </span><span class="kwd">def</span><span class="pln"> myButtonSlot</span><span class="pun">(</span><span class="pln">self</span><span class="pun">):</span><span class="pln">
+        objVar</span><span class="pun">=</span><span class="typ">OtherClass</span><span class="pun">()</span><span class="pln">
+        objVar</span><span class="pun">.</span><span class="pln">method</span><span class="pun">()</span><span class="pln">
+
+    </span><span class="kwd">def</span><span class="pln"> setupUi</span><span class="pun">(</span><span class="pln">self</span><span class="pun">,</span><span class="pln"> </span><span class="typ">MainWindow</span><span class="pun">):</span><span class="pln">
+        </span><span class="typ">MainWindow</span><span class="pun">.</span><span class="pln">setObjectName</span><span class="pun">(</span><span class="pln">_fromUtf8</span><span class="pun">(</span><span class="str">"MainWindow"</span><span class="pun">))</span><span class="pln">
+        </span><span class="typ">MainWindow</span><span class="pun">.</span><span class="pln">resize</span><span class="pun">(</span><span class="lit">389</span><span class="pun">,</span><span class="pln"> </span><span class="lit">332</span><span class="pun">)</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">centralwidget </span><span class="pun">=</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QWidget</span><span class="pun">(</span><span class="typ">MainWindow</span><span class="pun">)</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">centralwidget</span><span class="pun">.</span><span class="pln">setObjectName</span><span class="pun">(</span><span class="pln">_fromUtf8</span><span class="pun">(</span><span class="str">"centralwidget"</span><span class="pun">))</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">verticalLayout </span><span class="pun">=</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QVBoxLayout</span><span class="pun">(</span><span class="pln">self</span><span class="pun">.</span><span class="pln">centralwidget</span><span class="pun">)</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">verticalLayout</span><span class="pun">.</span><span class="pln">setObjectName</span><span class="pun">(</span><span class="pln">_fromUtf8</span><span class="pun">(</span><span class="str">"verticalLayout"</span><span class="pun">))</span><span class="pln">
+
+        self</span><span class="pun">.</span><span class="pln">pushButton </span><span class="pun">=</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QPushButton</span><span class="pun">(</span><span class="pln">self</span><span class="pun">.</span><span class="pln">centralwidget</span><span class="pun">)</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">pushButton</span><span class="pun">.</span><span class="pln">setObjectName</span><span class="pun">(</span><span class="pln">_fromUtf8</span><span class="pun">(</span><span class="str">"pushButton"</span><span class="pun">))</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">pushButton</span><span class="pun">.</span><span class="pln">clicked</span><span class="pun">.</span><span class="pln">connect</span><span class="pun">(</span><span class="pln">self</span><span class="pun">.</span><span class="pln">myButtonSlot</span><span class="pun">)</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">verticalLayout</span><span class="pun">.</span><span class="pln">addWidget</span><span class="pun">(</span><span class="pln">self</span><span class="pun">.</span><span class="pln">pushButton</span><span class="pun">)</span><span class="pln">
+
+        self</span><span class="pun">.</span><span class="pln">progressBar </span><span class="pun">=</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QProgressBar</span><span class="pun">(</span><span class="pln">self</span><span class="pun">.</span><span class="pln">centralwidget</span><span class="pun">)</span><span class="pln"> 
+        self</span><span class="pun">.</span><span class="pln">progressBar</span><span class="pun">.</span><span class="pln">setProperty</span><span class="pun">(</span><span class="str">"value"</span><span class="pun">,</span><span class="pln"> </span><span class="lit">24</span><span class="pun">)</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">progressBar</span><span class="pun">.</span><span class="pln">setObjectName</span><span class="pun">(</span><span class="pln">_fromUtf8</span><span class="pun">(</span><span class="str">"progressBar"</span><span class="pun">))</span><span class="pln">
+
+        self</span><span class="pun">.</span><span class="pln">verticalLayout</span><span class="pun">.</span><span class="pln">addWidget</span><span class="pun">(</span><span class="pln">self</span><span class="pun">.</span><span class="pln">progressBar</span><span class="pun">)</span><span class="pln">
+        </span><span class="typ">MainWindow</span><span class="pun">.</span><span class="pln">setCentralWidget</span><span class="pun">(</span><span class="pln">self</span><span class="pun">.</span><span class="pln">centralwidget</span><span class="pun">)</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">menubar </span><span class="pun">=</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QMenuBar</span><span class="pun">(</span><span class="typ">MainWindow</span><span class="pun">)</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">menubar</span><span class="pun">.</span><span class="pln">setGeometry</span><span class="pun">(</span><span class="typ">QtCore</span><span class="pun">.</span><span class="typ">QRect</span><span class="pun">(</span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">389</span><span class="pun">,</span><span class="pln"> </span><span class="lit">21</span><span class="pun">))</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">menubar</span><span class="pun">.</span><span class="pln">setObjectName</span><span class="pun">(</span><span class="pln">_fromUtf8</span><span class="pun">(</span><span class="str">"menubar"</span><span class="pun">))</span><span class="pln">
+        </span><span class="typ">MainWindow</span><span class="pun">.</span><span class="pln">setMenuBar</span><span class="pun">(</span><span class="pln">self</span><span class="pun">.</span><span class="pln">menubar</span><span class="pun">)</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">statusbar </span><span class="pun">=</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QStatusBar</span><span class="pun">(</span><span class="typ">MainWindow</span><span class="pun">)</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">statusbar</span><span class="pun">.</span><span class="pln">setObjectName</span><span class="pun">(</span><span class="pln">_fromUtf8</span><span class="pun">(</span><span class="str">"statusbar"</span><span class="pun">))</span><span class="pln">
+        </span><span class="typ">MainWindow</span><span class="pun">.</span><span class="pln">setStatusBar</span><span class="pun">(</span><span class="pln">self</span><span class="pun">.</span><span class="pln">statusbar</span><span class="pun">)</span><span class="pln">
+
+        self</span><span class="pun">.</span><span class="pln">retranslateUi</span><span class="pun">(</span><span class="typ">MainWindow</span><span class="pun">)</span><span class="pln">
+        </span><span class="typ">QtCore</span><span class="pun">.</span><span class="typ">QMetaObject</span><span class="pun">.</span><span class="pln">connectSlotsByName</span><span class="pun">(</span><span class="typ">MainWindow</span><span class="pun">)</span><span class="pln">
+
+    </span><span class="kwd">def</span><span class="pln"> retranslateUi</span><span class="pun">(</span><span class="pln">self</span><span class="pun">,</span><span class="pln"> </span><span class="typ">MainWindow</span><span class="pun">):</span><span class="pln">
+        </span><span class="typ">MainWindow</span><span class="pun">.</span><span class="pln">setWindowTitle</span><span class="pun">(</span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QApplication</span><span class="pun">.</span><span class="pln">translate</span><span class="pun">(</span><span class="str">"MainWindow"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"MainWindow"</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">None</span><span class="pun">,</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QApplication</span><span class="pun">.</span><span class="typ">UnicodeUTF8</span><span class="pun">))</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">pushButton</span><span class="pun">.</span><span class="pln">setText</span><span class="pun">(</span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QApplication</span><span class="pun">.</span><span class="pln">translate</span><span class="pun">(</span><span class="str">"MainWindow"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"PushButton"</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">None</span><span class="pun">,</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QApplication</span><span class="pun">.</span><span class="typ">UnicodeUTF8</span><span class="pun">))</span><span class="pln">  </span></code></pre>
+
+<h1>OtherClass.py</h1>
+
+<pre class="lang-py prettyprint prettyprinted"><code><span class="kwd">class</span><span class="pln"> </span><span class="typ">OtherClass</span><span class="pun">(</span><span class="pln">object</span><span class="pun">):</span><span class="pln">  
+    </span><span class="kwd">def</span><span class="pln"> method</span><span class="pun">(</span><span class="pln">self</span><span class="pun">):</span><span class="pln">
+        </span><span class="kwd">for</span><span class="pln"> i </span><span class="kwd">in</span><span class="pln"> range</span><span class="pun">(</span><span class="lit">100</span><span class="pun">):</span><span class="pln"> </span><span class="com"># i want to connect variable i to progress bar value</span><span class="pln">
+            </span><span class="kwd">print</span><span class="pln"> i 
+            </span><span class="kwd">for</span><span class="pln"> j </span><span class="kwd">in</span><span class="pln"> range</span><span class="pun">(</span><span class="lit">100500</span><span class="pun">):</span><span class="pln">
+                </span><span class="kwd">pass</span></code></pre>
+    </div>
+    <div class="post-taglist">
+        <a href="http://stackoverflow.com/questions/tagged/python" class="post-tag js-gps-track" title="show questions tagged &#39;python&#39;" rel="tag">python</a> <a href="http://stackoverflow.com/questions/tagged/pyqt" class="post-tag js-gps-track" title="show questions tagged &#39;pyqt&#39;" rel="tag">pyqt</a> <a href="http://stackoverflow.com/questions/tagged/signals-slots" class="post-tag js-gps-track" title="show questions tagged &#39;signals-slots&#39;" rel="tag">signals-slots</a> 
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/q/20873259" title="short permalink to this question" class="short-link" id="link-post-20873259">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/20873259/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/20873259/revisions" title="show all edits to this post">edited <span title="2014-01-01 22:53:16Z" class="relativetime">Jan 1 '14 at 22:53</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2014-01-01 21:05:19Z" class="relativetime">Jan 1 '14 at 21:05</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/2068356/%d0%a1%d0%b0%d1%88%d0%ba%d0%be-%d0%9b%d0%b8%d1%85%d0%b5%d0%bd%d0%ba%d0%be"><div class="gravatar-wrapper-32"><img src="./python - pyqt_ How to dynamically update widget property on outer variable value change_ - Stack Overflow_files/ac85f46a5b81289a982e3789601b1232" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/2068356/%d0%a1%d0%b0%d1%88%d0%ba%d0%be-%d0%9b%d0%b8%d1%85%d0%b5%d0%bd%d0%ba%d0%be">Сашко Лихенко</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">424</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="7 silver badges"><span class="badge2"></span><span class="badgecount">7</span></span><span title="20 bronze badges"><span class="badge3"></span><span class="badgecount">20</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</div>
+</td>
+        </tr>
+                    
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-20873259" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-31321802" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Please show the code that you have so far.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/984421/ekhumoro" title="55,799 reputation" class="comment-user">ekhumoro</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/20873259/pyqt-how-to-dynamically-update-widget-property-on-outer-variable-value-change#comment31321802_20873259"><span title="2014-01-01 22:10:28Z" class="relativetime-clean">Jan 1 '14 at 22:10</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-20873259" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/20873259/pyqt-how-to-dynamically-update-widget-property-on-outer-variable-value-change#" onclick=""></a>
+        </div>         
+    </td>
+</tr>        </tbody></table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								3 Answers
+                                <span style="display:none;" itemprop="answerCount">3</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="http://stackoverflow.com/questions/20873259/pyqt-how-to-dynamically-update-widget-property-on-outer-variable-value-change?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active" data-shortcut="A">
+            active</a>
+        <a href="http://stackoverflow.com/questions/20873259/pyqt-how-to-dynamically-update-widget-property-on-outer-variable-value-change?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest" data-shortcut="O">
+            oldest</a>
+        <a class="youarehere" href="http://stackoverflow.com/questions/20873259/pyqt-how-to-dynamically-update-widget-property-on-outer-variable-value-change?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes" data-shortcut="V">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="20874969"></a>
+<div id="answer-20874969" class="answer" data-answerid="20874969" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="20874969">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">6</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>You need to re-organize your code a little bit.</p>
+
+<p>Firstly, you should <em>never</em> edit the code in the UI module generated by <code>pyuic</code>. Instead, import it into your main module and implement all your application logic there.</p>
+
+<p>Secondly, you should create a main-window class in your main module, and do all the setup inside its <code>__init__</code> method.</p>
+
+<p>One way to solve your problem of connecting the loop variable to the progress bar, is to make <code>OtherClass</code> a subclass of <code>QObject</code> and emit a custom signal:</p>
+
+<pre class="lang-py prettyprint prettyprinted"><code><span class="kwd">from</span><span class="pln"> </span><span class="typ">PyQt4</span><span class="pln"> </span><span class="kwd">import</span><span class="pln"> </span><span class="typ">QtCore</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">OtherClass</span><span class="pun">(</span><span class="typ">QtCore</span><span class="pun">.</span><span class="typ">QObject</span><span class="pun">):</span><span class="pln">
+    valueUpdated </span><span class="pun">=</span><span class="pln"> </span><span class="typ">QtCore</span><span class="pun">.</span><span class="pln">pyqtSignal</span><span class="pun">(</span><span class="pln">int</span><span class="pun">)</span><span class="pln">
+
+    </span><span class="kwd">def</span><span class="pln"> method</span><span class="pun">(</span><span class="pln">self</span><span class="pun">):</span><span class="pln">
+        </span><span class="com"># i want to connect variable i to progress bar value</span><span class="pln">
+        </span><span class="kwd">for</span><span class="pln"> i </span><span class="kwd">in</span><span class="pln"> range</span><span class="pun">(</span><span class="lit">100</span><span class="pun">):</span><span class="pln">
+            </span><span class="kwd">print</span><span class="pln"> i
+            self</span><span class="pun">.</span><span class="pln">valueUpdated</span><span class="pun">.</span><span class="pln">emit</span><span class="pun">(</span><span class="pln">i</span><span class="pun">)</span><span class="pln">
+            </span><span class="kwd">for</span><span class="pln"> j </span><span class="kwd">in</span><span class="pln"> range</span><span class="pun">(</span><span class="lit">100500</span><span class="pun">):</span><span class="pln">
+                </span><span class="kwd">pass</span></code></pre>
+
+<p>With that in place, you would then move the setup for <code>pushButton</code> and its slot to "mainGUI.py", and re-generate "Ui_MainWindow.py" with <code>pyuic</code>. A slot would then be added to handle the custom <code>valueChanged</code> signal, which would update the progress bar and also process any pending GUI events.</p>
+
+<p>So "mainGUI.py" would end up looking something like this:</p>
+
+<pre class="lang-py prettyprint prettyprinted"><code><span class="kwd">import</span><span class="pln"> sys
+</span><span class="kwd">from</span><span class="pln"> </span><span class="typ">PyQt4</span><span class="pln"> </span><span class="kwd">import</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pln">
+</span><span class="kwd">from</span><span class="pln"> </span><span class="typ">Ui_MainWindow</span><span class="pln"> </span><span class="kwd">import</span><span class="pln"> </span><span class="typ">Ui_MainWindow</span><span class="pln">
+</span><span class="kwd">from</span><span class="pln"> </span><span class="typ">OtherClass</span><span class="pln"> </span><span class="kwd">import</span><span class="pln"> </span><span class="typ">OtherClass</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">MainWindow</span><span class="pun">(</span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QMainWindow</span><span class="pun">,</span><span class="pln"> </span><span class="typ">Ui_MainWindow</span><span class="pun">):</span><span class="pln">
+    </span><span class="kwd">def</span><span class="pln"> __init__</span><span class="pun">(</span><span class="pln">self</span><span class="pun">):</span><span class="pln">
+        </span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QMainWindow</span><span class="pun">.</span><span class="pln">__init__</span><span class="pun">(</span><span class="pln">self</span><span class="pun">)</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">setupUi</span><span class="pun">(</span><span class="pln">self</span><span class="pun">)</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">pushButton</span><span class="pun">.</span><span class="pln">clicked</span><span class="pun">.</span><span class="pln">connect</span><span class="pun">(</span><span class="pln">self</span><span class="pun">.</span><span class="pln">myButtonSlot</span><span class="pun">)</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">otherclass </span><span class="pun">=</span><span class="pln"> </span><span class="typ">OtherClass</span><span class="pun">(</span><span class="pln">self</span><span class="pun">)</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">otherclass</span><span class="pun">.</span><span class="pln">valueUpdated</span><span class="pun">.</span><span class="pln">connect</span><span class="pun">(</span><span class="pln">self</span><span class="pun">.</span><span class="pln">handleValueUpdated</span><span class="pun">)</span><span class="pln">
+
+    </span><span class="kwd">def</span><span class="pln"> myButtonSlot</span><span class="pun">(</span><span class="pln">self</span><span class="pun">):</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">otherclass</span><span class="pun">.</span><span class="pln">method</span><span class="pun">()</span><span class="pln">
+
+    </span><span class="kwd">def</span><span class="pln"> handleValueUpdated</span><span class="pun">(</span><span class="pln">self</span><span class="pun">,</span><span class="pln"> value</span><span class="pun">):</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">progressBar</span><span class="pun">.</span><span class="pln">setValue</span><span class="pun">(</span><span class="pln">value</span><span class="pun">)</span><span class="pln">
+        </span><span class="typ">QtGui</span><span class="pun">.</span><span class="pln">qApp</span><span class="pun">.</span><span class="pln">processEvents</span><span class="pun">()</span><span class="pln">
+
+</span><span class="kwd">def</span><span class="pln"> main</span><span class="pun">():</span><span class="pln">
+    app </span><span class="pun">=</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QApplication</span><span class="pun">(</span><span class="pln">sys</span><span class="pun">.</span><span class="pln">argv</span><span class="pun">)</span><span class="pln">
+    window </span><span class="pun">=</span><span class="pln"> </span><span class="typ">MainWindow</span><span class="pun">()</span><span class="pln">
+    window</span><span class="pun">.</span><span class="pln">show</span><span class="pun">()</span><span class="pln">
+    sys</span><span class="pun">.</span><span class="pln">exit</span><span class="pun">(</span><span class="pln">app</span><span class="pun">.</span><span class="pln">exec_</span><span class="pun">())</span><span class="pln">
+
+</span><span class="kwd">if</span><span class="pln"> __name__ </span><span class="pun">==</span><span class="pln"> </span><span class="str">'__main__'</span><span class="pun">:</span><span class="pln">
+
+    main</span><span class="pun">()</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/20874969" title="short permalink to this answer" class="short-link" id="link-post-20874969">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/20874969/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-01-02 01:06:55Z" class="relativetime">Jan 2 '14 at 1:06</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/984421/ekhumoro"><div class="gravatar-wrapper-32"><img src="./python - pyqt_ How to dynamically update widget property on outer variable value change_ - Stack Overflow_files/l9J30.png" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/984421/ekhumoro">ekhumoro</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 55,799" dir="ltr">55.8k</span><span title="10 gold badges"><span class="badge1"></span><span class="badgecount">10</span></span><span title="67 silver badges"><span class="badge2"></span><span class="badgecount">67</span></span><span title="115 bronze badges"><span class="badge3"></span><span class="badgecount">115</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-20874969" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-20874969" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/20873259/pyqt-how-to-dynamically-update-widget-property-on-outer-variable-value-change#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1210415903",4).setZone(44); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1210415903"></div>
+  
+<a name="20884714"></a>
+<div id="answer-20884714" class="answer" data-answerid="20884714" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="20884714">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">3</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>The following post has a version that increments the progress bar 10% each time you press the button. And a version which uses a timer to increment the progress bar. (I'm just in the process of learning this myself)</p>
+
+<p>In Qt Designer, add a progress bar and a button. Click on 'Edit Signals/Slots', drag a line from the button to somewhere in the window and when the button is 'pressed()' add a slot(or signal??) called 'button_pressed()' (use the + button to make this). When you have done this, the OK button is greyed out - select the slot you made, and press OK.</p>
+
+<p>Save the file as ui_MainWindow.ui (note the capitals carefully).
+Convert to a py file using the batch file &gt;</p>
+
+<pre class="lang-py prettyprint prettyprinted"><code><span class="pln">pyuic4 </span><span class="pun">-</span><span class="pln">x ui_MainWindow</span><span class="pun">.</span><span class="pln">ui </span><span class="pun">-</span><span class="pln">o ui_MainWindow</span><span class="pun">.</span><span class="pln">py</span></code></pre>
+
+<p>This file should look something like....(you don't need to edit this).</p>
+
+<pre class="lang-py prettyprint prettyprinted"><code><span class="kwd">from</span><span class="pln"> </span><span class="typ">PyQt4</span><span class="pln"> </span><span class="kwd">import</span><span class="pln"> </span><span class="typ">QtCore</span><span class="pun">,</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pln">
+
+</span><span class="kwd">try</span><span class="pun">:</span><span class="pln">
+    _fromUtf8 </span><span class="pun">=</span><span class="pln"> </span><span class="typ">QtCore</span><span class="pun">.</span><span class="typ">QString</span><span class="pun">.</span><span class="pln">fromUtf8
+</span><span class="kwd">except</span><span class="pln"> </span><span class="typ">AttributeError</span><span class="pun">:</span><span class="pln">
+    </span><span class="kwd">def</span><span class="pln"> _fromUtf8</span><span class="pun">(</span><span class="pln">s</span><span class="pun">):</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> s
+
+</span><span class="kwd">try</span><span class="pun">:</span><span class="pln">
+    _encoding </span><span class="pun">=</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QApplication</span><span class="pun">.</span><span class="typ">UnicodeUTF8</span><span class="pln">
+    </span><span class="kwd">def</span><span class="pln"> _translate</span><span class="pun">(</span><span class="pln">context</span><span class="pun">,</span><span class="pln"> text</span><span class="pun">,</span><span class="pln"> disambig</span><span class="pun">):</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QApplication</span><span class="pun">.</span><span class="pln">translate</span><span class="pun">(</span><span class="pln">context</span><span class="pun">,</span><span class="pln"> text</span><span class="pun">,</span><span class="pln"> disambig</span><span class="pun">,</span><span class="pln"> _encoding</span><span class="pun">)</span><span class="pln">
+</span><span class="kwd">except</span><span class="pln"> </span><span class="typ">AttributeError</span><span class="pun">:</span><span class="pln">
+    </span><span class="kwd">def</span><span class="pln"> _translate</span><span class="pun">(</span><span class="pln">context</span><span class="pun">,</span><span class="pln"> text</span><span class="pun">,</span><span class="pln"> disambig</span><span class="pun">):</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QApplication</span><span class="pun">.</span><span class="pln">translate</span><span class="pun">(</span><span class="pln">context</span><span class="pun">,</span><span class="pln"> text</span><span class="pun">,</span><span class="pln"> disambig</span><span class="pun">)</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">Ui_MainWindow</span><span class="pun">(</span><span class="pln">object</span><span class="pun">):</span><span class="pln">
+    </span><span class="kwd">def</span><span class="pln"> setupUi</span><span class="pun">(</span><span class="pln">self</span><span class="pun">,</span><span class="pln"> </span><span class="typ">MainWindow</span><span class="pun">):</span><span class="pln">
+        </span><span class="typ">MainWindow</span><span class="pun">.</span><span class="pln">setObjectName</span><span class="pun">(</span><span class="pln">_fromUtf8</span><span class="pun">(</span><span class="str">"MainWindow"</span><span class="pun">))</span><span class="pln">
+        </span><span class="typ">MainWindow</span><span class="pun">.</span><span class="pln">resize</span><span class="pun">(</span><span class="lit">800</span><span class="pun">,</span><span class="pln"> </span><span class="lit">600</span><span class="pun">)</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">centralwidget </span><span class="pun">=</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QWidget</span><span class="pun">(</span><span class="typ">MainWindow</span><span class="pun">)</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">centralwidget</span><span class="pun">.</span><span class="pln">setObjectName</span><span class="pun">(</span><span class="pln">_fromUtf8</span><span class="pun">(</span><span class="str">"centralwidget"</span><span class="pun">))</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">progressBar </span><span class="pun">=</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QProgressBar</span><span class="pun">(</span><span class="pln">self</span><span class="pun">.</span><span class="pln">centralwidget</span><span class="pun">)</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">progressBar</span><span class="pun">.</span><span class="pln">setGeometry</span><span class="pun">(</span><span class="typ">QtCore</span><span class="pun">.</span><span class="typ">QRect</span><span class="pun">(</span><span class="lit">110</span><span class="pun">,</span><span class="pln"> </span><span class="lit">90</span><span class="pun">,</span><span class="pln"> </span><span class="lit">118</span><span class="pun">,</span><span class="pln"> </span><span class="lit">23</span><span class="pun">))</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">progressBar</span><span class="pun">.</span><span class="pln">setProperty</span><span class="pun">(</span><span class="str">"value"</span><span class="pun">,</span><span class="pln"> </span><span class="lit">24</span><span class="pun">)</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">progressBar</span><span class="pun">.</span><span class="pln">setObjectName</span><span class="pun">(</span><span class="pln">_fromUtf8</span><span class="pun">(</span><span class="str">"progressBar"</span><span class="pun">))</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">pushButton </span><span class="pun">=</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QPushButton</span><span class="pun">(</span><span class="pln">self</span><span class="pun">.</span><span class="pln">centralwidget</span><span class="pun">)</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">pushButton</span><span class="pun">.</span><span class="pln">setGeometry</span><span class="pun">(</span><span class="typ">QtCore</span><span class="pun">.</span><span class="typ">QRect</span><span class="pun">(</span><span class="lit">120</span><span class="pun">,</span><span class="pln"> </span><span class="lit">200</span><span class="pun">,</span><span class="pln"> </span><span class="lit">75</span><span class="pun">,</span><span class="pln"> </span><span class="lit">23</span><span class="pun">))</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">pushButton</span><span class="pun">.</span><span class="pln">setObjectName</span><span class="pun">(</span><span class="pln">_fromUtf8</span><span class="pun">(</span><span class="str">"pushButton"</span><span class="pun">))</span><span class="pln">
+        </span><span class="typ">MainWindow</span><span class="pun">.</span><span class="pln">setCentralWidget</span><span class="pun">(</span><span class="pln">self</span><span class="pun">.</span><span class="pln">centralwidget</span><span class="pun">)</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">menubar </span><span class="pun">=</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QMenuBar</span><span class="pun">(</span><span class="typ">MainWindow</span><span class="pun">)</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">menubar</span><span class="pun">.</span><span class="pln">setGeometry</span><span class="pun">(</span><span class="typ">QtCore</span><span class="pun">.</span><span class="typ">QRect</span><span class="pun">(</span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">800</span><span class="pun">,</span><span class="pln"> </span><span class="lit">21</span><span class="pun">))</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">menubar</span><span class="pun">.</span><span class="pln">setObjectName</span><span class="pun">(</span><span class="pln">_fromUtf8</span><span class="pun">(</span><span class="str">"menubar"</span><span class="pun">))</span><span class="pln">
+        </span><span class="typ">MainWindow</span><span class="pun">.</span><span class="pln">setMenuBar</span><span class="pun">(</span><span class="pln">self</span><span class="pun">.</span><span class="pln">menubar</span><span class="pun">)</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">statusbar </span><span class="pun">=</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QStatusBar</span><span class="pun">(</span><span class="typ">MainWindow</span><span class="pun">)</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">statusbar</span><span class="pun">.</span><span class="pln">setObjectName</span><span class="pun">(</span><span class="pln">_fromUtf8</span><span class="pun">(</span><span class="str">"statusbar"</span><span class="pun">))</span><span class="pln">
+        </span><span class="typ">MainWindow</span><span class="pun">.</span><span class="pln">setStatusBar</span><span class="pun">(</span><span class="pln">self</span><span class="pun">.</span><span class="pln">statusbar</span><span class="pun">)</span><span class="pln">
+
+        self</span><span class="pun">.</span><span class="pln">retranslateUi</span><span class="pun">(</span><span class="typ">MainWindow</span><span class="pun">)</span><span class="pln">
+        </span><span class="typ">QtCore</span><span class="pun">.</span><span class="typ">QObject</span><span class="pun">.</span><span class="pln">connect</span><span class="pun">(</span><span class="pln">self</span><span class="pun">.</span><span class="pln">pushButton</span><span class="pun">,</span><span class="pln"> </span><span class="typ">QtCore</span><span class="pun">.</span><span class="pln">SIGNAL</span><span class="pun">(</span><span class="pln">_fromUtf8</span><span class="pun">(</span><span class="str">"pressed()"</span><span class="pun">)),</span><span class="pln"> </span><span class="typ">MainWindow</span><span class="pun">.</span><span class="pln">button_pressed</span><span class="pun">)</span><span class="pln">
+        </span><span class="typ">QtCore</span><span class="pun">.</span><span class="typ">QMetaObject</span><span class="pun">.</span><span class="pln">connectSlotsByName</span><span class="pun">(</span><span class="typ">MainWindow</span><span class="pun">)</span><span class="pln">
+
+    </span><span class="kwd">def</span><span class="pln"> retranslateUi</span><span class="pun">(</span><span class="pln">self</span><span class="pun">,</span><span class="pln"> </span><span class="typ">MainWindow</span><span class="pun">):</span><span class="pln">
+        </span><span class="typ">MainWindow</span><span class="pun">.</span><span class="pln">setWindowTitle</span><span class="pun">(</span><span class="pln">_translate</span><span class="pun">(</span><span class="str">"MainWindow"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"MainWindow"</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">None</span><span class="pun">))</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">pushButton</span><span class="pun">.</span><span class="pln">setText</span><span class="pun">(</span><span class="pln">_translate</span><span class="pun">(</span><span class="str">"MainWindow"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"PushButton"</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">None</span><span class="pun">))</span><span class="pln">
+
+
+</span><span class="kwd">if</span><span class="pln"> __name__ </span><span class="pun">==</span><span class="pln"> </span><span class="str">"__main__"</span><span class="pun">:</span><span class="pln">
+    </span><span class="kwd">import</span><span class="pln"> sys
+    app </span><span class="pun">=</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QApplication</span><span class="pun">(</span><span class="pln">sys</span><span class="pun">.</span><span class="pln">argv</span><span class="pun">)</span><span class="pln">
+    </span><span class="typ">MainWindow</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QMainWindow</span><span class="pun">()</span><span class="pln">
+    ui </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Ui_MainWindow</span><span class="pun">()</span><span class="pln">
+    ui</span><span class="pun">.</span><span class="pln">setupUi</span><span class="pun">(</span><span class="typ">MainWindow</span><span class="pun">)</span><span class="pln">
+    </span><span class="typ">MainWindow</span><span class="pun">.</span><span class="pln">show</span><span class="pun">()</span><span class="pln">
+    sys</span><span class="pun">.</span><span class="pln">exit</span><span class="pun">(</span><span class="pln">app</span><span class="pun">.</span><span class="pln">exec_</span><span class="pun">())</span></code></pre>
+
+<p>Create a 'program.py' file. This is the file you will run...</p>
+
+<pre class="lang-py prettyprint prettyprinted"><code><span class="kwd">import</span><span class="pln"> sys
+</span><span class="kwd">from</span><span class="pln"> </span><span class="typ">PyQt4</span><span class="pln"> </span><span class="kwd">import</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pln">
+</span><span class="com">#from PyQt5 import QtCore, QtGui, QtWidgets #works for pyqt5</span><span class="pln">
+</span><span class="kwd">from</span><span class="pln"> mainWindow </span><span class="kwd">import</span><span class="pln"> </span><span class="typ">MainWindow</span><span class="pln">
+
+</span><span class="kwd">def</span><span class="pln"> main</span><span class="pun">():</span><span class="pln">
+    </span><span class="com">#app = QtWidgets.QApplication (sys.argv) #works for pyqt5</span><span class="pln">
+    app </span><span class="pun">=</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QApplication</span><span class="pln"> </span><span class="pun">(</span><span class="pln">sys</span><span class="pun">.</span><span class="pln">argv</span><span class="pun">)</span><span class="pln"> </span><span class="com">#works for pyqt4</span><span class="pln">
+    m </span><span class="pun">=</span><span class="pln"> </span><span class="typ">MainWindow</span><span class="pln"> </span><span class="pun">()</span><span class="pln">
+    m</span><span class="pun">.</span><span class="pln">show </span><span class="pun">()</span><span class="pln">
+    sys</span><span class="pun">.</span><span class="pln">exit </span><span class="pun">(</span><span class="pln">app</span><span class="pun">.</span><span class="pln">exec_ </span><span class="pun">()</span><span class="pln"> </span><span class="pun">)</span><span class="pln">
+
+</span><span class="kwd">if</span><span class="pln"> __name__ </span><span class="pun">==</span><span class="pln"> </span><span class="str">'__main__'</span><span class="pun">:</span><span class="pln">
+    main </span><span class="pun">()</span></code></pre>
+
+<p>Now this is where the good stuff happens when you subclass the mainwindow. Call this file 'mainWindow.py'. Careful with the capitalizations.</p>
+
+<pre class="lang-py prettyprint prettyprinted"><code><span class="kwd">from</span><span class="pln"> </span><span class="typ">PyQt4</span><span class="pln"> </span><span class="kwd">import</span><span class="pln"> </span><span class="typ">QtCore</span><span class="pun">,</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pln">
+</span><span class="kwd">from</span><span class="pln"> ui_MainWindow </span><span class="kwd">import</span><span class="pln"> </span><span class="typ">Ui_MainWindow</span><span class="pln"> </span><span class="com">#note the capitalization</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">MainWindow</span><span class="pln"> </span><span class="pun">(</span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QMainWindow</span><span class="pun">):</span><span class="pln">
+    </span><span class="kwd">def</span><span class="pln"> __init__ </span><span class="pun">(</span><span class="pln">self</span><span class="pun">,</span><span class="pln"> parent </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">None</span><span class="pun">):</span><span class="pln">
+        super </span><span class="pun">(</span><span class="typ">MainWindow</span><span class="pun">,</span><span class="pln"> self</span><span class="pun">).</span><span class="pln">__init__ </span><span class="pun">()</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">ui </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Ui_MainWindow</span><span class="pln"> </span><span class="pun">()</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">ui</span><span class="pun">.</span><span class="pln">setupUi </span><span class="pun">(</span><span class="pln">self</span><span class="pun">)</span><span class="pln">
+        </span><span class="com">#------------do your custom stuff from here on-----------</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">progress </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="com">#Start value of progress bar</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">ui</span><span class="pun">.</span><span class="pln">progressBar</span><span class="pun">.</span><span class="pln">setValue</span><span class="pun">(</span><span class="pln">self</span><span class="pun">.</span><span class="pln">progress</span><span class="pun">)</span><span class="pln">
+
+    </span><span class="kwd">def</span><span class="pln"> button_pressed</span><span class="pun">(</span><span class="pln">self</span><span class="pun">):</span><span class="pln">
+        </span><span class="kwd">print</span><span class="pun">(</span><span class="str">'button pressed'</span><span class="pun">)</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">ui</span><span class="pun">.</span><span class="pln">statusbar</span><span class="pun">.</span><span class="pln">showMessage</span><span class="pun">(</span><span class="pln">str</span><span class="pun">(</span><span class="pln">self</span><span class="pun">.</span><span class="pln">progress</span><span class="pun">))</span><span class="pln"> </span><span class="com">#this is at bottom left of window. Discovered this accidentially when doing this!</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">ui</span><span class="pun">.</span><span class="pln">progressBar</span><span class="pun">.</span><span class="pln">setValue</span><span class="pun">(</span><span class="pln">self</span><span class="pun">.</span><span class="pln">progress</span><span class="pun">)</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">progress</span><span class="pun">+=</span><span class="lit">10</span></code></pre>
+
+<p>There is a good tutorial <a href="http://zetcode.com/gui/pyqt4/widgets/" rel="nofollow">here</a> which I used to create an alternate 'mainWindow.py' which uses a timer to increment the progress bar. It does not block the code with a loop using sleep or by doing a CPU intensive loop. I don't understand multithreading, multi-processor options yet to comment on using these.</p>
+
+<pre class="lang-py prettyprint prettyprinted"><code><span class="com">#from PyQt5 import QtCore, QtGui, QtWidgets #works for PyQt5</span><span class="pln">
+</span><span class="kwd">from</span><span class="pln"> </span><span class="typ">PyQt4</span><span class="pln"> </span><span class="kwd">import</span><span class="pln"> </span><span class="typ">QtCore</span><span class="pun">,</span><span class="pln"> </span><span class="typ">QtGui</span><span class="pln">
+</span><span class="kwd">from</span><span class="pln"> ui_MainWindow </span><span class="kwd">import</span><span class="pln"> </span><span class="typ">Ui_MainWindow</span><span class="pln"> </span><span class="com">#note the capitalization</span><span class="pln">
+
+</span><span class="kwd">class</span><span class="pln"> </span><span class="typ">MainWindow</span><span class="pln"> </span><span class="pun">(</span><span class="typ">QtGui</span><span class="pun">.</span><span class="typ">QMainWindow</span><span class="pun">):</span><span class="pln">
+    </span><span class="kwd">def</span><span class="pln"> __init__ </span><span class="pun">(</span><span class="pln">self</span><span class="pun">,</span><span class="pln"> parent </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">None</span><span class="pun">):</span><span class="pln">
+        super </span><span class="pun">(</span><span class="typ">MainWindow</span><span class="pun">,</span><span class="pln"> self</span><span class="pun">).</span><span class="pln">__init__ </span><span class="pun">()</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">ui </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Ui_MainWindow</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="com">#same name as appears in mainWindowUi.py</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">ui</span><span class="pun">.</span><span class="pln">setupUi </span><span class="pun">(</span><span class="pln">self</span><span class="pun">)</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">progress </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="com">#Start value of progress bar</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">ui</span><span class="pun">.</span><span class="pln">progressBar</span><span class="pun">.</span><span class="pln">setValue</span><span class="pun">(</span><span class="pln">self</span><span class="pun">.</span><span class="pln">progress</span><span class="pun">)</span><span class="pln">
+
+        self</span><span class="pun">.</span><span class="pln">timer </span><span class="pun">=</span><span class="pln"> </span><span class="typ">QtCore</span><span class="pun">.</span><span class="typ">QBasicTimer</span><span class="pun">()</span><span class="pln">
+
+    </span><span class="kwd">def</span><span class="pln"> button_pressed</span><span class="pun">(</span><span class="pln">self</span><span class="pun">):</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">timerEvent</span><span class="pun">(</span><span class="lit">64</span><span class="pun">)</span><span class="pln"> </span><span class="com">#this needs an argument to work but I'm not sure what is is yet so I just put in some random number</span><span class="pln">
+
+    </span><span class="kwd">def</span><span class="pln"> timerEvent</span><span class="pun">(</span><span class="pln">self</span><span class="pun">,</span><span class="pln"> e</span><span class="pun">):</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">ui</span><span class="pun">.</span><span class="pln">progressBar</span><span class="pun">.</span><span class="pln">setValue</span><span class="pun">(</span><span class="pln">self</span><span class="pun">.</span><span class="pln">progress</span><span class="pun">)</span><span class="pln">
+        </span><span class="kwd">if</span><span class="pln"> self</span><span class="pun">.</span><span class="pln">progress </span><span class="pun">&gt;=</span><span class="lit">100</span><span class="pun">:</span><span class="pln">
+            self</span><span class="pun">.</span><span class="pln">timer</span><span class="pun">.</span><span class="pln">stop</span><span class="pun">()</span><span class="pln">
+       </span><span class="kwd">else</span><span class="pun">:</span><span class="pln">
+            </span><span class="kwd">if</span><span class="pln"> self</span><span class="pun">.</span><span class="pln">timer</span><span class="pun">.</span><span class="pln">isActive</span><span class="pun">():</span><span class="pln">
+                </span><span class="kwd">pass</span><span class="pln">
+            </span><span class="kwd">else</span><span class="pun">:</span><span class="pln">
+                self</span><span class="pun">.</span><span class="pln">timer</span><span class="pun">.</span><span class="pln">start</span><span class="pun">(</span><span class="lit">10</span><span class="pun">,</span><span class="pln">self</span><span class="pun">)</span><span class="pln"> </span><span class="com">#10 milliseconds</span><span class="pln">
+        self</span><span class="pun">.</span><span class="pln">progress</span><span class="pun">+=</span><span class="lit">1</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/20884714" title="short permalink to this answer" class="short-link" id="link-post-20884714">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/20884714/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/20884714/revisions" title="show all edits to this post">edited <span title="2014-01-14 22:26:47Z" class="relativetime">Jan 14 '14 at 22:26</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-01-02 14:04:13Z" class="relativetime">Jan 2 '14 at 14:04</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/1478617/ninga"><div class="gravatar-wrapper-32"><img src="./python - pyqt_ How to dynamically update widget property on outer variable value change_ - Stack Overflow_files/0ef55e7feee6c2aaf2218a7ab32f2c12" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/1478617/ninga">Ninga</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">349</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="10 bronze badges"><span class="badge3"></span><span class="badgecount">10</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-20884714" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-20884714" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/20873259/pyqt-how-to-dynamically-update-widget-property-on-outer-variable-value-change#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="20874042"></a>
+<div id="answer-20874042" class="answer" data-answerid="20874042" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="20874042">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>You have to use a signal and slot...and multiprocessing or multithreading.</p>
+
+<p>There's a good example here that specifically takes you through the progress bar:
+<a href="http://zetcode.com/gui/pyqt4/widgets/" rel="nofollow">ZetCode Progress Bar</a></p>
+
+<p>Also, question has been answered here before:
+<a href="http://stackoverflow.com/questions/13269936/python-qt-progressbar">SO Progress Bar</a></p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/20874042" title="short permalink to this answer" class="short-link" id="link-post-20874042">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/20874042/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-01-01 22:39:07Z" class="relativetime">Jan 1 '14 at 22:39</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/3152033/catwalker333"><div class="gravatar-wrapper-32"><img src="./python - pyqt_ How to dynamically update widget property on outer variable value change_ - Stack Overflow_files/1db593e71818a89b23a4007307d28b4b" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/3152033/catwalker333">catwalker333</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">148</span><span title="6 bronze badges"><span class="badge3"></span><span class="badgecount">6</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-20874042" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-20874042" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/20873259/pyqt-how-to-dynamically-update-widget-property-on-outer-variable-value-change#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+									<a name="new-answer"></a>
+						<form id="post-form" action="http://stackoverflow.com/questions/20873259/answer/submit" method="post" class="post-form">
+						    <input type="hidden" id="post-id" value="20873259">
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false">
+                            <input type="hidden" name="referrer" value="https://www.google.co.in/">
+							<h2 class="space">Your Answer</h2>
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+                // Have to fire editor after snippets, if snippets enabled
+                if (StackExchange.settings.snippets.snippetsEnabled) {
+                    StackExchange.using("snippets", function() {
+                        createEditor();
+                    });
+                }
+                else {
+                    createEditor();
+                }
+            });
+
+            function createEditor() {
+                StackExchange.prepareEditor({
+                    heartbeatType: 'answer',
+                convertImagesToLinks: true,
+                reputationToPostImages: 10,
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                    ,immediatelyShowMarkdownHelp:true
+                    });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"><ul id="wmd-button-row" class="wmd-button-row"><li id="wmd-bold-button" class="wmd-button" style="left: 0px;"><span style="background-position: 0px -20px;"></span></li><li id="wmd-italic-button" class="wmd-button" style="left: 25px;"><span style="background-position: -20px -20px;"></span></li><li id="wmd-spacer1" class="wmd-spacer" style="left: 50px;"><span style="background-position: -40px -20px;"></span></li><li id="wmd-link-button" class="wmd-button" style="left: 75px;"><span style="background-position: -40px -20px;"></span></li><li id="wmd-quote-button" class="wmd-button" style="left: 100px;"><span style="background-position: -60px -20px;"></span></li><li id="wmd-code-button" class="wmd-button" style="left: 125px;"><span style="background-position: -80px -20px;"></span></li><li id="wmd-image-button" class="wmd-button" style="left: 150px;"><span style="background-position: -100px -20px;"></span></li><li id="wmd-spacer2" class="wmd-spacer" style="left: 175px;"><span style="background-position: -120px -20px;"></span></li><li id="wmd-olist-button" class="wmd-button" style="left: 200px;"><span style="background-position: -120px -20px;"></span></li><li id="wmd-ulist-button" class="wmd-button" style="left: 225px;"><span style="background-position: -140px -20px;"></span></li><li id="wmd-heading-button" class="wmd-button" style="left: 250px;"><span style="background-position: -160px -20px;"></span></li><li id="wmd-hr-button" class="wmd-button" style="left: 275px;"><span style="background-position: -180px -20px;"></span></li><li id="wmd-spacer3" class="wmd-spacer" style="left: 300px;"><span style="background-position: -200px -20px;"></span></li><li id="wmd-undo-button" class="wmd-button" style="left: 325px;"><span style="background-position: -200px -20px;"></span></li><li id="wmd-redo-button" class="wmd-button" style="left: 350px;"><span style="background-position: -220px -20px;"></span></li></ul></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="515a9673fc46795fa2d29b49460de3d2">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+								            <div class="form-item new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="http://stackoverflow.com/users/login?ssrc=question_page&amp;returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f20873259%2fpyqt-how-to-dynamically-update-widget-property-on-outer-variable-value-change%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Email and Password</span></p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="manual-openid" class="manual-openid">
+                    <input type="hidden" name="use-facebook" class="use-facebook" value="false">
+                    <input type="hidden" name="use-google" class="use-google" value="false">
+                    <input type="button" class="submit-openid" value="Submit" style="display:none">
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tbody><tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown">
+                </div>
+            </td>
+        </tr>
+        </tbody></table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', 'http%3a%2f%2fstackoverflow.com%2fquestions%2f20873259%2fpyqt-how-to-dynamically-update-widget-property-on-outer-variable-value-change%23new-answer', 'question_page');
+                    }
+                );
+            </script>
+            <noscript>
+                        &lt;h3&gt;Post as a guest&lt;/h3&gt;
+    &lt;div class="form-item"&gt;
+        &lt;table&gt;
+        &lt;tr&gt;
+                    &lt;td class="vm"&gt;
+                &lt;div&gt;
+                    &lt;label for="display-name"&gt;Name&lt;/label&gt;
+                    &lt;input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105"&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;label for="m-address"&gt;Email&lt;/label&gt;
+                    &lt;input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" /&gt;
+                &lt;/div&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+
+            </noscript>
+
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="http://stackoverflow.com/questions/20873259/pyqt-how-to-dynamically-update-widget-property-on-outer-variable-value-change#" class="btn-clear discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href="http://stackexchange.com/legal/privacy-policy" name="privacy" target="_blank">privacy policy</a> and <a href="http://stackexchange.com/legal/terms-of-service" name="tos" target="_blank">terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1">								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you're looking for?							Browse other questions tagged <a href="http://stackoverflow.com/questions/tagged/python" class="post-tag" title="show questions tagged &#39;python&#39;" rel="tag">python</a> <a href="http://stackoverflow.com/questions/tagged/pyqt" class="post-tag" title="show questions tagged &#39;pyqt&#39;" rel="tag">pyqt</a> <a href="http://stackoverflow.com/questions/tagged/signals-slots" class="post-tag" title="show questions tagged &#39;signals-slots&#39;" rel="tag">signals-slots</a>  or <a href="http://stackoverflow.com/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes" role="complementary" aria-label="sidebar">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tbody><tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2014-01-01 21:05:19Z"><b>3 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>13001 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="http://stackoverflow.com/questions/20873259/pyqt-how-to-dynamically-update-widget-property-on-outer-variable-value-change?lastactivity" class="lastactivity-link" title="2014-01-14 22:26:47Z">3 years ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </tbody></table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Blog
+                </div>
+                <hr>
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <a href="https://stackoverflow.blog/2017/03/30/stack-overflow-unveils-next-steps-computer-security/?cb=1" class="question-hyperlink">
+<div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>                </a>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="https://stackoverflow.blog/2017/03/30/stack-overflow-unveils-next-steps-computer-security/?cb=1" class="question-hyperlink">Stack Overflow Unveils the Next Steps in Computer Security</a>
+                </div>
+                <br class="cbt">
+            </div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1873155084",[5,17,2221]).setZone(45); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1873155084"><div id="careersadsdoublehigh" style="display:none;"></div><img height="0px" width="0px" border="0" style="position: absolute; display: none !important;" src="http://engine.adzerk.net/i.gif?e=eyJhdiI6NDE0LCJhdCI6NSwiYnQiOjAsImNtIjo5MjEsImNoIjoxMTc4LCJjayI6e30sImNyIjoyNjg4LCJkaSI6ImMwMzAzNGI4MzJkZjRhZTY5Y2M4NGQ4YmYyNzUwMzBhIiwiZG0iOjEsImZjIjoyNDg1LCJmbCI6MjY2MywiaXAiOiIxMTIuMTk2LjE5LjM0Iiwia3ciOiJweXRob24scHlxdCxzaWduYWxzLXNsb3RzIiwibnciOjIyLCJwYyI6MCwiZWMiOjAsInByIjo2MTczNywicnQiOjEsInJmIjoiaHR0cHM6Ly93d3cuZ29vZ2xlLmNvLmluLyIsInN0Ijo4Mjc3LCJ1ayI6InVlMS04YWE5YTNmYjdjMzg0ZWUwOGM2Y2U1MDAyNTc3YjdlMiIsInpuIjo0NSwidHMiOjE0OTEwMzI5ODY3MzEsImJmIjp0cnVlLCJwbiI6ImFkemVyazE4NzMxNTUwODQiLCJmcSI6MH0&amp;s=tQfOZfkJqtj7ygCCoudJfBYiJko"></div>
+            <div id="hireme" class="clc-jobs-multi orange tagged"><a class="top " href="https://stackoverflow.com/jobs" target="_blank" data-clc-click="https://clc.stackoverflow.com/click?an=40x9dmP15YorHqzXHvt5MjExMDCwMICAdoMdY3a0BgPDcQ2wWM8GBoYGe0ZGEEf6kgYTg-ZjZpB4yoFHPxmsShsr7GeHSzMxtC2Eijp27bZ0KRS3Z2QrqCzJyM-bbcjMxMBRBJWVYb1r-e-KP0I2QIiJ4WQ_WHZbf-GKOZZZnhlwWQaWHIZvE7ueP37SCgA&amp;cr=10439&amp;ct=1&amp;url=https%3A%2F%2Fstackoverflow.com%2Fjobs&amp;sig=vLGKc_orHM1UPg"><span>Looking for a job?</span></a><div class="middle"><ul class="jobs"><li class="&quot;clc-dismissable&quot;"><div class="job-wrap"><a class="job" title="Software Developer at YouGov. Click to learn more." href="https://stackoverflow.com/jobs/138991/software-developer-yougov" target="_blank" data-clc-click="https://clc.stackoverflow.com/click?an=40x9dmP15YorHqzXHvt5MjExMDCwMICAdoMdY3a0BgPDcQ2wWM8GBoYGe0ZGEEf6kgYTg-ZjZpB4yoFHPxmsShsr7GeHSzMxtC2Eijp27bZ0KRS3Z2QrqCzJyM-bbcjMxMBRBJWVYb1r-e-KP0I2QIiJ4WQ_WHZbf-GKOZZZnhlwWQaWHIZvE7ueP37SCgA&amp;cr=254761&amp;ct=0&amp;url=https%3A%2F%2Fstackoverflow.com%2Fjobs%2F138991%2Fsoftware-developer-yougov&amp;sig=8CkyFkUDkbkZ2w"><div class="title">Software Developer</div><div><span class="company">YouGov</span><span class="location">No office location</span></div><div class="opts"><span class="opt remote">Remote</span></div><span class="post-tag">python-2.7</span><span class="post-tag">python-3.x</span></a></div><a class="clc-dismiss" data-clc-click="https://clc.stackoverflow.com/click?an=40x9dmP15YorHqzXHvt5MjExMDCwMICAdoMdY3a0BgPDcQ2wWM8GBoYGe0ZGEEf6kgYTg-ZjZpB4yoFHPxmsShsr7GeHSzMxtC2Eijp27bZ0KRS3Z2QrqCzJyM-bbcjMxMBRBJWVYb1r-e-KP0I2QIiJ4WQ_WHZbf-GKOZZZnhlwWQaWHIZvE7ueP37SCgA&amp;cr=254761&amp;ct=-1&amp;sig=pLjdn3fDni8lOQ" data-clc-meta-target="-1"><span class="clc-tooltip above-left">dismiss this job</span></a></li><li class="&quot;clc-dismissable&quot;"><div class="job-wrap"><a class="job" title="Python Developer (100% remote within European timezones) at Hotjar. Click to learn more." href="https://stackoverflow.com/jobs/135660/python-developer-100-remote-within-european-hotjar" target="_blank" data-clc-click="https://clc.stackoverflow.com/click?an=40x9dmP15YorHqzXHvt5MjExMDCwMICAdoMdY3a0BgPDcQ2wWM8GBoYGe0ZGEEf6kgYTg-ZjZpB4yoFHPxmsShsr7GeHSzMxtC2Eijp27bZ0KRS3Z2QrqCzJyM-bbcjMxMBRBJWVYb1r-e-KP0I2QIiJ4WQ_WHZbf-GKOZZZnhlwWQaWHIZvE7ueP37SCgA&amp;cr=237958&amp;ct=0&amp;url=https%3A%2F%2Fstackoverflow.com%2Fjobs%2F135660%2Fpython-developer-100-remote-within-european-hotjar&amp;sig=07che0VtLW022Q"><div class="title">Python Developer (100% remote within European timezones)</div><div><span class="company">Hotjar</span><span class="location">No office location</span></div><div class="opts"><span class="opt salary">€50k - €70k</span><span class="opt remote">Remote</span></div><span class="post-tag highlight">python</span><span class="post-tag">javascript</span></a></div><a class="clc-dismiss" data-clc-click="https://clc.stackoverflow.com/click?an=40x9dmP15YorHqzXHvt5MjExMDCwMICAdoMdY3a0BgPDcQ2wWM8GBoYGe0ZGEEf6kgYTg-ZjZpB4yoFHPxmsShsr7GeHSzMxtC2Eijp27bZ0KRS3Z2QrqCzJyM-bbcjMxMBRBJWVYb1r-e-KP0I2QIiJ4WQ_WHZbf-GKOZZZnhlwWQaWHIZvE7ueP37SCgA&amp;cr=237958&amp;ct=-1&amp;sig=_ahfFNyFNbqolQ" data-clc-meta-target="-1"><span class="clc-tooltip above-left">dismiss this job</span></a></li><li class="&quot;clc-dismissable&quot;"><div class="job-wrap"><a class="job" title="Python Developer - Build the smartest way to buy a car (Telecommute - full time) at Unhaggle Inc.. Click to learn more." href="https://stackoverflow.com/jobs/129873/python-developer-build-the-smartest-way-to-buy-unhaggle-inc" target="_blank" data-clc-click="https://clc.stackoverflow.com/click?an=40x9dmP15YorHqzXHvt5MjExMDCwMICAdoMdY3a0BgPDcQ2wWM8GBoYGe0ZGEEf6kgYTg-ZjZpB4yoFHPxmsShsr7GeHSzMxtC2Eijp27bZ0KRS3Z2QrqCzJyM-bbcjMxMBRBJWVYb1r-e-KP0I2QIiJ4WQ_WHZbf-GKOZZZnhlwWQaWHIZvE7ueP37SCgA&amp;cr=225800&amp;ct=0&amp;url=https%3A%2F%2Fstackoverflow.com%2Fjobs%2F129873%2Fpython-developer-build-the-smartest-way-to-buy-unhaggle-inc&amp;sig=5dAlY6n0U7YCVA"><div class="title">Python Developer - Build the smartest way to buy a car (Telecommute - full time)</div><div><span class="company">Unhaggle Inc.</span><span class="location">No office location</span></div><div class="opts"><span class="opt remote">Remote</span></div><span class="post-tag">django</span><span class="post-tag highlight">python</span></a></div><a class="clc-dismiss" data-clc-click="https://clc.stackoverflow.com/click?an=40x9dmP15YorHqzXHvt5MjExMDCwMICAdoMdY3a0BgPDcQ2wWM8GBoYGe0ZGEEf6kgYTg-ZjZpB4yoFHPxmsShsr7GeHSzMxtC2Eijp27bZ0KRS3Z2QrqCzJyM-bbcjMxMBRBJWVYb1r-e-KP0I2QIiJ4WQ_WHZbf-GKOZZZnhlwWQaWHIZvE7ueP37SCgA&amp;cr=225800&amp;ct=-1&amp;sig=nR03wxkIBA4yCA" data-clc-meta-target="-1"><span class="clc-tooltip above-left">dismiss this job</span></a></li><li class="&quot;clc-dismissable&quot;"><div class="job-wrap"><a class="job" title="Backend Developer Python (m/f) at CeleraOne GmbH. Click to learn more." href="https://stackoverflow.com/jobs/133344/backend-developer-python-m-f-celeraone-gmbh" target="_blank" data-clc-click="https://clc.stackoverflow.com/click?an=40x9dmP15YorHqzXHvt5MjExMDCwMICAdoMdY3a0BgPDcQ2wWM8GBoYGe0ZGEEf6kgYTg-ZjZpB4yoFHPxmsShsr7GeHSzMxtC2Eijp27bZ0KRS3Z2QrqCzJyM-bbcjMxMBRBJWVYb1r-e-KP0I2QIiJ4WQ_WHZbf-GKOZZZnhlwWQaWHIZvE7ueP37SCgA&amp;cr=233417&amp;ct=0&amp;url=https%3A%2F%2Fstackoverflow.com%2Fjobs%2F133344%2Fbackend-developer-python-m-f-celeraone-gmbh&amp;sig=6SfyQ_4Qo9fN6w"><div class="title">Backend Developer Python (m/f)</div><div><span class="company">CeleraOne GmbH</span><span class="location">Berlin, Deutschland</span></div><div class="opts"><span class="opt salary">€40k - €60k</span><span class="opt relocate">Relocation</span><span class="opt visa">Visa Sponsorship</span></div><span class="post-tag highlight">python</span><span class="post-tag">http</span></a></div><a class="clc-dismiss" data-clc-click="https://clc.stackoverflow.com/click?an=40x9dmP15YorHqzXHvt5MjExMDCwMICAdoMdY3a0BgPDcQ2wWM8GBoYGe0ZGEEf6kgYTg-ZjZpB4yoFHPxmsShsr7GeHSzMxtC2Eijp27bZ0KRS3Z2QrqCzJyM-bbcjMxMBRBJWVYb1r-e-KP0I2QIiJ4WQ_WHZbf-GKOZZZnhlwWQaWHIZvE7ueP37SCgA&amp;cr=233417&amp;ct=-1&amp;sig=FnaRV8d8p-MEQQ" data-clc-meta-target="-1"><span class="clc-tooltip above-left">dismiss this job</span></a></li></ul></div><img src="./python - pyqt_ How to dynamically update widget property on outer variable value change_ - Stack Overflow_files/impression.gif" class="impression" style="display: none;"></div>
+        <script>
+window.clc_request = 'AiY6i6nTeNQIAAAAACuAPgECAAAAAgAAAAAbAAAAfHB5dGhvbnxweXF0fHNpZ25hbHMtc2xvdHN8ADU_3fuMTc0boic';
+;(function(n){var t,u,r,i;try{if(typeof[].indexOf!="function")return;if(window.attachEvent&&!window.addEventListener)return;if(n.allowed[0]!=="*"&&n.allowed.indexOf(location.hostname)===-1)return;if(t=window,t.clc=t.clc||{},u=t.clc_request||t.clcfl_request,t.clc.init=t.clc.init||[],t.clc.init.push(function(n){return n.load()}),t.clc.options){for(r in t.clc.options)n[r]=t.clc.options[r];t.clc.options=n}else t.clc.options=n;i=document.createElement("script");i.async=!0;i.src=n.lib;document.body.appendChild(i)}catch(f){console.error("[clc] Error in loader:",f)}}).call(null, {"azw":true,"kt":2000,"tto":true,"autoload":true,"d":{"sb":["hireme","clc-sb"],"tlb":["careers1","clc-tlb"],"mlb":["careers3","clc-mlb"]},"allowed":["stackoverflow.com","serverfault.com","blog.codinghorror.com","talent.stackoverflow.com"],"h":"clc.stackoverflow.com","u":"https://clc.stackoverflow.com/markup.js","lib":"https://cdn.sstatic.net/clc/clc.min.js?v=c05c304a48c2"});        </script>
+			
+
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/13269936?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">6</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/13269936/python-qt-progressbar?noredirect=1&amp;lq=1" class="question-hyperlink">Python QT ProgressBar</a>
+</div>
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/31004308?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/31004308/python-updating-a-gui-progress-bar-with-a-variable-in-a-funtion-that-changes-as?noredirect=1&amp;lq=1" class="question-hyperlink">Python: Updating a GUI progress bar with a variable in a funtion that changes as it iterates</a>
+</div>			</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/5899826?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">18</div></a><a href="http://stackoverflow.com/questions/5899826/pyqt-how-to-remove-a-widget?rq=1" class="question-hyperlink">pyqt: how to remove a widget?</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/9614827?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="http://stackoverflow.com/questions/9614827/python-timer-with-qt-design-button-and-lcd-number?rq=1" class="question-hyperlink">Python Timer with Qt Design Button and LCD number</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/14610988?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">0</div></a><a href="http://stackoverflow.com/questions/14610988/pyqt-dynamically-update-properties-for-dynamically-created-widgets?rq=1" class="question-hyperlink">pyqt: dynamically update properties for dynamically created widgets</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/21243681?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">-2</div></a><a href="http://stackoverflow.com/questions/21243681/python-attributeerror-type-object-ui-form-has-no-attribute-combobox?rq=1" class="question-hyperlink">Python: AttributeError: type object 'Ui_Form' has no attribute 'comboBox'</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/26538414?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="http://stackoverflow.com/questions/26538414/how-to-call-a-variable-in-another-file-and-dynamically-change-variable-names-py?rq=1" class="question-hyperlink">How to call a variable in another file and dynamically change variable names? PyQt</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/26871347?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">1</div></a><a href="http://stackoverflow.com/questions/26871347/update-variable-from-sensor-in-widget-with-signal-and-slot?rq=1" class="question-hyperlink">Update variable from sensor in Widget with Signal and Slot</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/36787709?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">-1</div></a><a href="http://stackoverflow.com/questions/36787709/return-value-from-pyqt-slot-of-qwebview-to-main-window-widget-pyqt-python?rq=1" class="question-hyperlink">Return value from PYQt slot of QwebView to main window widget (PYQt python)</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/37635205?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">0</div></a><a href="http://stackoverflow.com/questions/37635205/update-changes-smoothly-of-a-pyqt-widget?rq=1" class="question-hyperlink">Update changes smoothly of a PyQt widget</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/38936017?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="http://stackoverflow.com/questions/38936017/how-to-get-the-response-in-qtlabel-in-my-chatbot-pyqt-settext-gives-error-at?rq=1" class="question-hyperlink">How to Get The response in QtLabel in my Chatbot Pyqt? setText Gives error : “AttributeError: 'bool' object has no attribute 'label'”</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/41006037?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">0</div></a><a href="http://stackoverflow.com/questions/41006037/pyqt-dynamically-automatically-changing-color-properties-of-table-widget?rq=1" class="question-hyperlink">PyQT dynamically, automatically changing color properties of table widget</a></div>
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module tex2jax_ignore">
+    <h4>
+        <a href="https://stackexchange.com/questions?tab=hot" class="js-gps-track" data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li>
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/97379/can-i-use-lightning-lure-as-a-grappling-hook" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can I use Lightning Lure as a grappling hook?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-ux" title="User Experience Stack Exchange"></div><a href="http://ux.stackexchange.com/questions/106370/order-of-female-and-male-in-survey-form" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:102 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Order of "female" and "male" in survey form
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/75797/human-echolocation-for-spies-what-sound-to-use" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Human echolocation for spies. What sound to use?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/2212107/interesting-continued-fraction" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Interesting continued fraction
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-writers" title="Writers Stack Exchange"></div><a href="http://writers.stackexchange.com/questions/27415/credibility-of-using-english-in-non-english-speaking-worlds" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:166 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Credibility of using English in non-English-speaking worlds
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/87241/is-it-okay-to-refuse-a-laptop-from-a-new-university-if-you-already-have-your-own" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it okay to refuse a laptop from a new university if you already have your own personal laptop?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/75471/how-can-an-unimaginably-huge-life-form-reliably-communicate-with-mortals" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can an unimaginably huge life form reliably communicate with mortals?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-korean" title="Korean Language Stack Exchange"></div><a href="http://korean.stackexchange.com/questions/2588/is-korean-an-official-language-in-south-korea" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:654 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is Korean an official language in South Korea?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-codereview" title="Code Review Stack Exchange"></div><a href="http://codereview.stackexchange.com/questions/159498/calculating-money-made-per-hour" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:196 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Calculating money made per hour
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/97377/can-an-assassin-stack-critical-hits" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can an Assassin stack critical hits?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="https://security.stackexchange.com/questions/155132/allow-only-specific-devices-to-be-connected-to-usb" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Allow only specific devices to be connected to USB
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-retrocomputing" title="Retrocomputing Stack Exchange"></div><a href="http://retrocomputing.stackexchange.com/questions/2573/why-do-programmable-sound-generators-like-sid-include-a-noise-generator" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:648 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why do programmable sound generators like SID include a noise generator?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-aviation" title="Aviation Stack Exchange"></div><a href="http://aviation.stackexchange.com/questions/36733/how-much-training-does-an-a320-pilot-need-to-fly-an-a321" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:528 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How much training does an A320 pilot need to fly an A321?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="https://security.stackexchange.com/questions/155057/my-isp-uses-deep-packet-inspection-what-can-they-observe" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    My ISP uses deep packet inspection; what can they observe?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/355188/removing-characters-between-pipes" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Removing characters between |pipes|
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/114686/lists-and-arrays-part-by-part" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Lists and arrays, part by part
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-electronics" title="Electrical Engineering Stack Exchange"></div><a href="http://electronics.stackexchange.com/questions/295881/what-kind-of-ic-is-this" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:135 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What kind of IC is this?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-money" title="Personal Finance &amp; Money Stack Exchange"></div><a href="http://money.stackexchange.com/questions/77977/why-are-currency-forwards-needed" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:93 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why are currency forwards needed?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/114270/how-much-time-is-remaining" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How much time is remaining?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-apple" title="Ask Different"></div><a href="http://apple.stackexchange.com/questions/278191/sudo-vs-su-as-non-root-user" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:118 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    sudo vs su (as non-root user)
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-softwareengineering" title="Software Engineering Stack Exchange"></div><a href="http://softwareengineering.stackexchange.com/questions/345018/when-using-the-single-responsibility-principle-what-constitutes-a-responsibili" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:131 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    When using the Single Responsibility Principle, what constitutes a "responsibility?"
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/97419/can-a-wererat-be-executed-with-a-non-magical-guillotine" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can a wererat be executed with a non-magical guillotine?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/2212532/can-uncountable-be-defined-as-unable-to-be-generated-by-any-algorithm" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can uncountable be defined as unable to be generated by any algorithm
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/2211590/how-do-i-resolve-this-paradox-of-counting-line-segments" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How do I resolve this paradox of counting line segments?
+                </a>
+
+            </li>
+    </ul>
+
+        
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="http://stackoverflow.com/feeds/question/20873259" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/20873259/ivc/92cf');});
+</script>
+<noscript>
+    &lt;div&gt;&lt;img src="/posts/20873259/ivc/92cf" class="dno" alt="" width="0" height="0"&gt;&lt;/div&gt;
+</noscript><div style="display:none" id="prettify-lang">lang-py</div></div>
+
+
+        </div>
+    </div><script async="" src="./python - pyqt_ How to dynamically update widget property on outer variable value change_ - Stack Overflow_files/clc.min.js.download"></script>
+    <div id="footer" class="categories" role="contentinfo">
+        <div class="footerwrap">            
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                    <a href="http://stackoverflow.com/company/about">about us</a>
+                        <a href="http://stackoverflow.com/tour">tour</a>
+                    <a href="http://stackoverflow.com/help">help</a>
+                    <a href="https://stackoverflow.blog/?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com/">chat</a>
+                    <a href="https://data.stackexchange.com/">data</a>
+                    <a href="https://stackexchange.com/legal">legal</a>
+                    <a href="https://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackoverflow.com/company/work-here">work here</a>
+                    <a href="https://www.stackoverflowbusiness.com/advertise">advertising info</a>
+                        <a href="http://stackoverflow.com/jobs/directory/developer-jobs">developer jobs directory</a>
+
+                    <a onclick="StackExchange.switchMobile(&quot;on&quot;)">mobile</a>
+                    <b><a href="http://stackoverflow.com/contact">contact us</a></b>
+                        <b><a href="https://meta.stackoverflow.com/">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tbody><tr>
+            <th colspan="3">
+                Technology
+            </th>
+            <th>
+                Life / Arts
+            </th>
+            <th>
+                Culture / Recreation
+            </th>
+            <th>
+                Science
+            </th>
+            <th>
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="http://stackoverflow.com/" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="http://serverfault.com/" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="http://superuser.com/" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="http://webapps.stackexchange.com/" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="http://askubuntu.com/" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="http://webmasters.stackexchange.com/" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="http://gamedev.stackexchange.com/" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="http://tex.stackexchange.com/" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                        <li><a href="http://softwareengineering.stackexchange.com/" title="professionals, academics, and students working within the systems development life cycle who care about creating, delivering, and maintaining software responsibly">Software Engineering</a></li>
+                        <li><a href="http://unix.stackexchange.com/" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="http://apple.stackexchange.com/" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="http://wordpress.stackexchange.com/" title="WordPress developers and administrators">WordPress Development</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://gis.stackexchange.com/" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="http://electronics.stackexchange.com/" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="http://android.stackexchange.com/" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="http://security.stackexchange.com/" title="information security professionals">Information Security</a></li>
+                        <li><a href="http://dba.stackexchange.com/" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="http://drupal.stackexchange.com/" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="http://sharepoint.stackexchange.com/" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="http://ux.stackexchange.com/" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="http://mathematica.stackexchange.com/" title="users of Wolfram Mathematica">Mathematica</a></li>
+                        <li><a href="http://salesforce.stackexchange.com/" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="http://expressionengine.stackexchange.com/" title="administrators, end users, developers and designers for ExpressionEngine® CMS">ExpressionEngine® Answers</a></li>
+                        <li><a href="http://crypto.stackexchange.com/" title="software developers, mathematicians and others interested in cryptography">Cryptography</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://codereview.stackexchange.com/" title="peer programmer code reviews">Code Review</a></li>
+                        <li><a href="http://magento.stackexchange.com/" title="users of the Magento e-Commerce platform">Magento</a></li>
+                        <li><a href="http://dsp.stackexchange.com/" title="practitioners of the art and science of signal, image and video processing">Signal Processing</a></li>
+                        <li><a href="http://raspberrypi.stackexchange.com/" title="users and developers of hardware and software for Raspberry Pi">Raspberry Pi</a></li>
+                        <li><a href="http://codegolf.stackexchange.com/" title="programming puzzle enthusiasts and code golfers">Programming Puzzles &amp; Code Golf</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (7)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://photo.stackexchange.com/" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="http://scifi.stackexchange.com/" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="http://graphicdesign.stackexchange.com/" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="http://movies.stackexchange.com/" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="http://music.stackexchange.com/" title="musicians, students, and enthusiasts">Music: Practice &amp; Theory</a></li>
+                        <li><a href="http://cooking.stackexchange.com/" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="http://diy.stackexchange.com/" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="http://money.stackexchange.com/" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="http://academia.stackexchange.com/" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (8)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://english.stackexchange.com/" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="http://skeptics.stackexchange.com/" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="http://judaism.stackexchange.com/" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="http://travel.stackexchange.com/" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="http://christianity.stackexchange.com/" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="http://ell.stackexchange.com/" title="speakers of other languages learning English">English Language Learners</a></li>
+                        <li><a href="http://japanese.stackexchange.com/" title="students, teachers, and linguists wanting to discuss the finer points of the Japanese language">Japanese Language</a></li>
+                        <li><a href="http://gaming.stackexchange.com/" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="http://bicycles.stackexchange.com/" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="http://rpg.stackexchange.com/" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                        <li><a href="http://anime.stackexchange.com/" title="anime and manga fans">Anime &amp; Manga</a></li>
+                        <li><a href="http://mechanics.stackexchange.com/" title="mechanics and DIY enthusiast owners of cars, trucks, and motorcycles">Motor Vehicle Maintenance &amp; Repair</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (17)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://mathoverflow.net/" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="http://math.stackexchange.com/" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="http://stats.stackexchange.com/" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="http://cstheory.stackexchange.com/" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="http://physics.stackexchange.com/" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="http://chemistry.stackexchange.com/" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="http://biology.stackexchange.com/" title="biology researchers, academics, and students">Biology</a></li>
+                        <li><a href="http://cs.stackexchange.com/" title="students, researchers and practitioners of computer science">Computer Science</a></li>
+                        <li><a href="http://philosophy.stackexchange.com/" title="those interested in the study of the fundamental nature of knowledge, reality, and existence">Philosophy</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (3)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://meta.stackexchange.com/" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="http://stackapps.com/" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="http://area51.stackexchange.com/" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="https://www.stackoverflowbusiness.com/talent">Stack Overflow Talent</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</tbody></table>
+                </div>
+            </div>
+            <div id="copyright">
+                site design / logo © 2017 Stack Exchange Inc; user contributions licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2017.3.31.25580
+            </div>
+                </div>
+    </div>
+    <noscript>
+        &lt;div id="noscript-warning"&gt;Stack Overflow works best with JavaScript enabled&lt;img src="https://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"&gt;&lt;/div&gt;
+    </noscript>
+
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    
+    
+        
+        ados.run.push(function () {
+                setTimeout(function () { $("#adzerk-user-match").remove(); }, window.AUMIframeDone ? 0 : 2000);
+                ados_setKeywords('python,pyqt,signals-slots');; ados_load();
+        });   
+        
+</script>
+
+    <script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function() { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+                ga('create', 'UA-5620270-1');
+                ga('create', 'UA-5620270-59', {name: 'pageData', sampleRate: 5 });
+                ga('set', 'dimension2', '|python|pyqt|signals-slots|');
+                ga('pageData.set', 'dimension2', '|python|pyqt|signals-slots|');
+                ga('send', 'pageview');
+                ga('pageData.send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+                qc.async = true;
+                qc.src = (ssl ? 'https://secure' : 'http://edge') + '.quantserve.com/quant.js';
+                s.parentNode.insertBefore(qc, s);
+                _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+                            var sc=document.createElement('script');
+                sc.async=true;
+                sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+                s.parentNode.insertBefore(sc, s);
+                _comscore.push({ c1: "2", c2: "17440561" });
+        })();
+
+    </script>
+        
+    
+            <script type="text/javascript">
+                
+                (function(appendChild) {
+                    Node.prototype.appendChild = function() {
+                        var parent = this;
+                        var newNode = arguments[0];
+                        if (parent.nodeName === 'HEAD'
+                            && newNode
+                            && newNode.nodeName === 'SCRIPT'
+                            && newNode.src) {
+                            
+                            window.setTimeout(function() {
+                                var result = newNode.src.match(/^https:\/\/maps\.googleapis\.com\/maps\/api\/place\/js\/(\w+)Service\./i) || [];
+                                var service = result[1];
+                                if (service) {
+                                    if (service === 'Autocompletion') service =  2;
+                                    else if (service === 'Place') service = 1;
+                                    else service = 0;
+                                    StackExchange.using('gps', function() {
+                                        StackExchange.gps.track('google_maps_places_api.call', { service: service });
+                                    });
+                                }
+                            }, 0);
+                        }
+                        return appendChild.apply(this, arguments);
+                    };
+                })(Node.prototype.appendChild);
+            </script>
+    
+</body></html>
