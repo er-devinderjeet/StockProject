@@ -8,7 +8,7 @@ import numpy as np
 import matplotlib
 from mpl_finance import candlestick_ohlc
 matplotlib.rcParams.update({'font.size':19})
-matplotlib.use('Qt4Agg')
+
 
 stockName='PVR','RUSHIL'
 
@@ -19,7 +19,6 @@ def drawStockGraph(stock):
                                                             converters={0: mdates.strpdate2num('%Y%m%d')})
 
 
-
         fig = plt.figure()
         ax1 = plt.subplot(1,1,1)
         ax1.plot(date,close)
@@ -28,6 +27,7 @@ def drawStockGraph(stock):
         plt.subplots_adjust(left=.17)
 
         plt.show()
+
 
     except Exception,e:
         print str(e)," error"

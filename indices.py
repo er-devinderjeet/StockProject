@@ -7,7 +7,17 @@ import time
 import datetime as dt
 
 stockPull = 'PVR'
-stocksName = 'SBIN','ICICIBANK','PVR','HCLTECH'
+stocksName = 'CNXMEDIA','NSEI','NSEBANK','CNXIT'
+
+def  fifteenDays(stock):
+        urlToVisit = 'http://chartapi.finance.yahoo.com/instrument/1.0/%5E'+stock+'/chartdata;type=quote;range=15d/csv'
+        #urlToVisit = 'http://chartapi.finance.yahoo.com/instrument/1.0/%5E'+stock+'.NS/chartdata;type=quote;range=1d/csv'
+        saveFileLine = 'stock/15_days/'+stock+'.csv'
+def  tenDays(stock):
+        urlToVisit = 'http://chartapi.finance.yahoo.com/instrument/1.0/%5E'+stock+'/chartdata;type=quote;range=15d/csv'
+        #urlToVisit = 'http://chartapi.finance.yahoo.com/instrument/1.0/%5E'+stock+'.NS/chartdata;type=quote;range=1d/csv'
+
+
 
 def pullData(stock):
     try:
@@ -16,14 +26,17 @@ def pullData(stock):
                   .fromtimestamp(time
                                  .time())
                   .strftime('%d-%m-%Y %I:%M:%S'))
-        urlToVisit = 'http://chartapi.finance.yahoo.com/instrument/1.0/'+stock+'.NS/chartdata;type=quote;range=10d/csv'
-        saveFileLine = 'stock/10_days/'+stock+'.txt'
+        urlToVisit = 'http://chartapi.finance.yahoo.com/instrument/1.0/%5E'+stock+'/chartdata;type=quote;range=10d/csv'
+
+        saveFileLine = 'stock/10_days/'+stock+'.csv'
+
 
         try:
             readExistingData = open(saveFileLine, 'r').read()
             splitExisting = readExistingData.split('\n')
             mostRecentLine = splitExisting[-2]
             lastUnix = mostRecentLine.split(',')[0]
+
         except Exception, e:
             print str(e)
             lastUnix = 0

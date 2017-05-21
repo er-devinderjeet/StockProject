@@ -9,10 +9,10 @@ import matplotlib
 #from matplotlib.finance import candlestick_ohlc
 from mpl_finance import candlestick_ohlc
 matplotlib.rcParams.update({'font.size':9})
-matplotlib.use('Qt4Agg')
 
 
-stocksName = 'PVR','RUSHIL','BPCL','RPOWER'
+
+stocksName = 'PVR','HCLTECH','ICICIBANK','SBIN'
 stockName = 'PVR'
 
 class ohlcGraph():

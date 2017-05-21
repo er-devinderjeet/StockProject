@@ -1,4 +1,5 @@
 __author__ = 'Devinderjeet'
+__author__ = 'Devinderjeet'
 
 #http://chartapi.finance.yahoo.com/instrument/1.0/RUSHIL.NS/chartdata;type=quote;range=5d/csv
 import sys
@@ -16,13 +17,13 @@ def pullData(stock):
                   .fromtimestamp(time
                                  .time())
                   .strftime('%d-%m-%Y %I:%M:%S'))
-        urlToVisit = 'http://chartapi.finance.yahoo.com/instrument/1.0/'+stock+'.NS/chartdata;type=quote;range=10d/csv'
-        saveFileLine = 'stock/10_days/'+stock+'.txt'
+        urlToVisit = 'http://chartapi.finance.yahoo.com/instrument/1.0/'+stock+'.NS/chartdata;type=quote;range=1d/csv'
+        saveFileLine = 'stock/1_day/'+stock+'.txt'
 
         try:
             readExistingData = open(saveFileLine, 'r').read()
             splitExisting = readExistingData.split('\n')
-            mostRecentLine = splitExisting[-2]
+            mostRecentLine = splitExisting[-1]
             lastUnix = mostRecentLine.split(',')[0]
         except Exception, e:
             print str(e)
@@ -38,10 +39,13 @@ def pullData(stock):
             if 'values' not in eachLine:
                 splitLine = eachLine.split(',')
                 if len(splitLine)==6:
-                    if int(splitLine[0]) > int(lastUnix):
+                    if splitLine[0] > lastUnix:
                         lineToWrite  = eachLine+'\n'
-                        saveFile.write(lineToWrite)
-        saveFile.close()
+                        nxtLine = lineToWrite
+
+                        print nxtLine
+                        #saveFile.write(lineToWrite)
+        #saveFile.close()
 
         print "Pulled ", stock
         print "Sleeping"
@@ -59,7 +63,7 @@ def forever():
         print "Hello"
         for eachStock in stocksName:
             pullData(eachStock)
-        time.sleep(300)
+        time.sleep(120)
 
 def exit():
     print "Exiting Application"

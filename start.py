@@ -9,6 +9,11 @@
 from PyQt4 import QtCore, QtGui
 import TA2
 import ohlcGraph
+import indices
+import one_day_fetch
+import one_day_indices
+
+
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -27,30 +32,54 @@ except AttributeError:
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName(_fromUtf8("Form"))
-        Form.resize(321, 94)
+        Form.resize(521, 94)
 
-        self.start = QtGui.QPushButton(Form)
-        self.start.setGeometry(QtCore.QRect(40, 60, 75, 23))
-        self.start.setObjectName(_fromUtf8("start"))
+
+        self.stock = QtGui.QPushButton(Form)
+        self.stock.setGeometry(QtCore.QRect(40, 20, 75, 23))
+        self.stock.setObjectName(_fromUtf8("stock"))
+
+
+        self.indices = QtGui.QPushButton(Form)
+        self.indices.setGeometry(QtCore.QRect(40, 60, 75, 23))
+        self.indices.setObjectName(_fromUtf8("indices"))
+
+        self.one_day_fetch = QtGui.QPushButton(Form)
+        self.one_day_fetch.setGeometry(QtCore.QRect(180, 20, 75, 23))
+        self.one_day_fetch.setObjectName(_fromUtf8("one_day_fetch"))
+
+        self.one_day_indices = QtGui.QPushButton(Form)
+        self.one_day_indices.setGeometry(QtCore.QRect(180, 60, 75, 23))
+        self.one_day_indices.setObjectName(_fromUtf8("one_day_indices"))
 
         self.stop = QtGui.QPushButton(Form)
-        self.stop.setGeometry(QtCore.QRect(180, 60, 75, 23))
+        self.stop.setGeometry(QtCore.QRect(300, 60, 75, 23))
         self.stop.setObjectName(_fromUtf8("stop"))
 
         self.label = QtGui.QLabel(Form)
-        self.label.setGeometry(QtCore.QRect(110, 30, 71, 16))
+        self.label.setGeometry(QtCore.QRect(50, 10, 71, 16))
         self.label.setObjectName(_fromUtf8("label"))
 
         self.retranslateUi(Form)
-        QtCore.QObject.connect(self.start, QtCore.SIGNAL(_fromUtf8("clicked()")), TA2.forever)
+        #QtCore.QObject.connect(self.start, QtCore.SIGNAL(_fromUtf8("clicked()")), TA2.forever)
+        QtCore.QObject.connect(self.indices, QtCore.SIGNAL(_fromUtf8("clicked()")), indices.forever)
+        QtCore.QObject.connect(self.stock, QtCore.SIGNAL(_fromUtf8("clicked()")), TA2.forever)
+        QtCore.QObject.connect(self.one_day_fetch, QtCore.SIGNAL(_fromUtf8("clicked()")), one_day_fetch.forever)
+        QtCore.QObject.connect(self.one_day_indices, QtCore.SIGNAL(_fromUtf8("clicked()")), one_day_indices.forever)
+
+
         QtCore.QObject.connect(self.stop, QtCore.SIGNAL(_fromUtf8("clicked()")), ohlcGraph.main)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
         Form.setWindowTitle(_translate("Form", "Fetching Data", None))
-        self.start.setText(_translate("Form", "Start ", None))
+        self.indices.setText(_translate("Form", "Indices ", None))
+        self.stock.setText(_translate("Form", "Stock ", None))
+        self.one_day_fetch.setText(_translate("Form", "1 day ", None))
+        self.one_day_indices.setText(_translate("Form", "day indices", None))
+
         self.stop.setText(_translate("Form", "Stop", None))
-        self.label.setText(_translate("Form", "Current Status", None))
+        self.label.setText(_translate("Form", "Stock Data", None))
 
 
 if __name__ == "__main__":
@@ -61,10 +90,3 @@ if __name__ == "__main__":
     ui.setupUi(Form_1)
     Form_1.show()
     sys.exit(app.exec_())
-
-    app_2 = QtGui.QApplication(sys.argv)
-    widget_2 = QtGui.QWidget()
-    ui_2 = Ui_Form()
-    ui_2.setupUi(widget_2)
-    widget_2.show()
-    sys.exit(app_2.exec_())

@@ -25,10 +25,11 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
+
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName(_fromUtf8("Form"))
-        Form.resize(205, 100)
+        Form.resize(305, 200)
 
         self.pushButton = QtGui.QPushButton(Form)
         self.pushButton.setGeometry(QtCore.QRect(10, 20, 75, 23))
@@ -41,10 +42,20 @@ class Ui_Form(object):
 
         #dates Graph button
         self.daysBasicButton = QtGui.QPushButton(Form)
-        self.daysBasicButton.setGeometry(QtCore.QRect(10, 50, 75, 23))
+        self.daysBasicButton.setGeometry(QtCore.QRect(10, 60, 75, 23))
         self.daysBasicButton.setFixedWidth(150)
         self.daysBasicButton.setObjectName(_fromUtf8("daysBasicButton"))
 
+        '''
+        #Label Statistic
+        '''
+        self.label = QtGui.QLabel(Form)
+        self.label.setGeometry(QtCore.QRect(20, 90, 110, 16))
+
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label.setFont(font)
+        self.label.setObjectName(_fromUtf8("label"))
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -55,12 +66,15 @@ class Ui_Form(object):
         QtCore.QObject.connect(self.daysBasicButton,QtCore.SIGNAL(_fromUtf8("clicked()")), daysGraph.forever)
 
 
+
+
     def retranslateUi(self, Form):
         Form.setWindowTitle(_translate("Form", "Form", None))
         self.pushButton.setText(_translate("Form", "Basic Graph", None))
         self.ohlcButton.setText(_translate("Form", "Candle Stick Graph", None))
         self.daysBasicButton.setText(_translate("Form", "Basic Daily Chart", None))
         self.daysBasicButton.setText(_translate("Form", "Basic Daily Chart", None))
+        self.label.setText(_translate("Form", "Statistic Analysis", None))
 
 
 if __name__ == "__main__":

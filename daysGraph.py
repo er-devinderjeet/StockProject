@@ -8,11 +8,10 @@ import numpy as np
 import matplotlib
 from mpl_finance import candlestick_ohlc
 matplotlib.rcParams.update({'font.size':10})
-matplotlib.use('Qt4Agg')
 import datetime as dt
 
-stockName='PVR','RUSHIL'
 
+stockName = 'SBIN','ICICIBANK'
 def drawStockGraph(stock):
     try:
         stockFile = 'stock/10_days/'+ stock +'.txt'
